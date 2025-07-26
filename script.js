@@ -1,38 +1,50 @@
-// SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
+// Hamburger meny toggling
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('nav ul');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Smooth scroll till sektioner
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
+    navLinks.classList.remove('active'); // stäng meny på mobil
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
+    target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-// MODAL POPUP FÖR "LÄS MER"
-const readMoreButtons = document.querySelectorAll('.read-more');
-const modal = document.getElementById('modal');
-const modalText = document.getElementById('modal-text');
-const closeBtn = document.querySelector('.close-btn');
+// Enkel formulärvalidering och feedback
+const form = document.getElementById('contact-form');
+const formMessage = document.getElementById('form-message');
 
-readMoreButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const serviceInfo = button.closest('.service-card').getAttribute('data-info');
-    modalText.textContent = serviceInfo;
-    modal.classList.remove('hidden');
-  });
-});
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  formMessage.textContent = '';
 
-// STÄNG MODAL
-closeBtn.addEventListener('click', () => {
-  modal.classList.add('hidden');
-});
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
 
-// STÄNG MODAL NÄR MAN KLICKAR UTANFÖR
-window.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.classList.add('hidden');
+  if (!name || !email || !message) {
+    formMessage.textContent = 'Vänligen fyll i alla fält.';
+    return;
   }
+  // Enkel e-postkontroll
+  if (!validateEmail(email)) {
+    formMessage.textContent = 'Vänligen ange en giltig e-postadress.';
+    return;
+  }
+
+  // Här kan du lägga till kod för att skicka formulär till server via AJAX eller liknande
+  formMessage.style.color = 'green';
+  formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
+  form.reset();
 });
+
+function validateEmail(email) {
+  const re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  return re.test(email.toLowerCase());
+}
