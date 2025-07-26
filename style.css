@@ -118,7 +118,7 @@ nav ul li a:hover {
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .service-card h3 {
@@ -126,46 +126,41 @@ nav ul li a:hover {
   margin-bottom: 0.8rem;
 }
 
-/* Om oss */
+/* About */
 .about-section {
   background: white;
-  padding: 2.5rem 2rem;
+  padding: 3rem 1.5rem;
+  margin: 3rem 0;
   border-radius: 12px;
-  margin: 4rem 0;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .about-section h2 {
-  margin-bottom: 1.5rem;
-  font-size: 2.5rem;
   color: #1e3c72;
-  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .about-section p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #555;
 }
 
 /* Offertsektion */
 #quote {
   background: white;
-  max-width: 700px;
-  margin: 4rem auto;
   padding: 2.5rem 2rem;
+  margin: 3rem 0;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 #quote h2 {
   color: #1e3c72;
-  font-weight: 700;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
@@ -174,236 +169,179 @@ nav ul li a:hover {
 }
 
 .slider-group label {
-  display: flex;
-  justify-content: space-between;
+  display: block;
   font-weight: 600;
+  margin-bottom: 0.5rem;
   color: #1e3c72;
-  margin-bottom: 0.4rem;
-}
-
-.slider-description {
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: #666;
 }
 
 input[type=range] {
   width: 100%;
   -webkit-appearance: none;
+  background: #ddd;
   height: 8px;
   border-radius: 5px;
-  background: #ddd;
   outline: none;
-  margin-bottom: 0.3rem;
-  cursor: pointer;
   transition: background 0.3s ease;
+  cursor: pointer;
 }
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
+  width: 24px;
+  height: 24px;
   background: #1e3c72;
   cursor: pointer;
+  border-radius: 50%;
   border: 2px solid #ffd600;
+  margin-top: -8px;
   transition: background 0.3s ease;
 }
 
 input[type=range]:hover::-webkit-slider-thumb {
-  background: #16335b;
+  background: #16406a;
 }
 
-input[type=range]::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #1e3c72;
-  cursor: pointer;
-  border: 2px solid #ffd600;
-  transition: background 0.3s ease;
-}
-
-input[type=range]:hover::-moz-range-thumb {
-  background: #16335b;
-}
-
-.slider-value {
-  text-align: right;
-  font-weight: 600;
-  color: #555;
-  font-size: 0.9rem;
-  margin-top: -0.8rem;
-  margin-bottom: 1.2rem;
-}
-
-/* Radio buttons */
 .radio-group {
-  margin-bottom: 2rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 1.8rem;
 }
 
 .radio-group label {
-  display: inline-block;
-  margin: 0 1.5rem;
-  cursor: pointer;
-  font-weight: 600;
-  color: #1e3c72;
   position: relative;
   padding-left: 30px;
+  cursor: pointer;
   user-select: none;
-  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e3c72;
 }
 
-.radio-group input[type="radio"] {
+.radio-group input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.radio-group .checkmark {
+.checkmark {
   position: absolute;
+  top: 1px;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 22px;
-  width: 22px;
-  background-color: #ddd;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
   border-radius: 50%;
   border: 2px solid #1e3c72;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.radio-group label:hover .checkmark {
-  background-color: #cce0ff;
+.radio-group label:hover input ~ .checkmark {
+  background-color: #ccc;
 }
 
-.radio-group input[type="radio"]:checked ~ .checkmark {
-  background-color: #1e3c72;
+.radio-group input:checked ~ .checkmark {
+  background-color: #ffd600;
   border-color: #ffd600;
 }
 
-.radio-group .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.radio-group input[type="radio"]:checked ~ .checkmark:after {
-  display: block;
-}
-
-.radio-group .checkmark:after {
-  top: 6px;
-  left: 6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ffd600;
-}
-
-/* Pris-text */
 #price {
-  font-weight: 700;
-  font-size: 1.8rem;
   text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #1e3c72;
-  margin-top: 1rem;
 }
 
-/* Kontaktformulär */
+/* Kontakt */
 .contact-section {
   background: white;
   padding: 3rem 2rem;
   border-radius: 12px;
-  max-width: 700px;
-  margin: 4rem auto 6rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  margin-bottom: 3rem;
 }
 
 .contact-section h2 {
-  font-size: 2.5rem;
+  text-align: center;
   color: #1e3c72;
   margin-bottom: 2rem;
-  text-align: center;
 }
 
-.contact-section form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.contact-section label {
+form label {
+  display: block;
+  margin-bottom: 0.4rem;
   font-weight: 600;
   color: #1e3c72;
 }
 
-.contact-section input,
-.contact-section textarea {
-  padding: 0.8rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   font-size: 1rem;
-  font-family: inherit;
-  resize: vertical;
   transition: border-color 0.3s ease;
+  resize: vertical;
 }
 
-.contact-section input:focus,
-.contact-section textarea:focus {
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+  border-color: #ffd600;
   outline: none;
-  border-color: #1e3c72;
 }
 
-.contact-section button {
-  background: #1e3c72;
-  color: #ffd600;
-  padding: 1rem 0;
-  font-weight: 700;
-  font-size: 1.1rem;
+form button.btn-primary {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 0.8rem 0;
+  font-size: 1.2rem;
   border: none;
   border-radius: 30px;
+  background-color: #ffd600;
+  color: #1e3c72;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.contact-section button:hover {
-  background: #16335b;
+form button.btn-primary:hover {
+  background-color: #e6c700;
 }
 
 #form-message {
-  font-weight: 600;
-  color: #1e3c72;
-  margin-top: 0.6rem;
+  margin-top: 1rem;
   text-align: center;
+  font-weight: 600;
+  color: #e63946;
 }
 
 /* Footer */
 footer {
   background: #1e3c72;
-  color: #ffd600;
+  color: white;
   text-align: center;
   padding: 1rem 0;
-  font-weight: 600;
-  letter-spacing: 1.1px;
-  font-size: 1rem;
 }
 
-/* Responsiv */
+/* Responsivitet */
 @media (max-width: 768px) {
   nav ul {
     display: none;
     flex-direction: column;
     background: white;
     position: absolute;
-    top: 60px;
+    top: 65px;
     right: 20px;
-    padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     border-radius: 8px;
-    width: 160px;
     z-index: 100;
   }
 
@@ -414,10 +352,4 @@ footer {
   .hamburger {
     display: flex;
   }
-
-  .slider-group label {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
-
