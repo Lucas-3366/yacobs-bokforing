@@ -11,8 +11,8 @@ const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
 const tjanstInputs = document.querySelectorAll('input[name="tjanst"]');
 const priceDisplay = document.getElementById('price');
-const omsattningText = document.getElementById('omsattning-text');
-const fakturorText = document.getElementById('fakturor-text');
+const omsattningLabel = document.getElementById('label-omsattning');
+const fakturorLabel = document.getElementById('label-fakturor');
 
 // Text för sliders
 const omsattningLabels = {
@@ -46,8 +46,8 @@ function calculatePrice() {
   const key = `${omsattningVal}-${fakturorVal}`;
   const pris = prisTabell[key];
 
-  omsattningText.textContent = omsattningLabels[omsattningVal];
-  fakturorText.textContent = fakturorLabels[fakturorVal];
+  omsattningLabel.textContent = `Omsättning per år (tkr): ${omsattningLabels[omsattningVal]}`;
+  fakturorLabel.textContent = `Antal fakturor/kvitton per månad: ${fakturorLabels[fakturorVal]}`;
 
   const tjanst = [...tjanstInputs].find(input => input.checked).value;
 
