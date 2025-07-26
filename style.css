@@ -363,3 +363,82 @@ footer {
     display: flex;
   }
 }
+
+.offert-section {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 480px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.offert-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #1b3a57;
+}
+
+.offert-section p {
+  text-align: center;
+  color: #444;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+}
+
+.slider-group {
+  margin-bottom: 20px;
+}
+
+.slider-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0a2a47;
+}
+
+.slider-group select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 2px solid #0a2a47;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.slider-group select:hover,
+.slider-group select:focus {
+  border-color: #2a81f7;
+  outline: none;
+}
+
+.resultat {
+  background-color: #e4f0fe;
+  border: 1px solid #2a81f7;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  color: #0a2a47;
+  margin-bottom: 25px;
+}
+
+#be-offert-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: #2a81f7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#be-offert-btn:hover {
+  background-color: #1a5ede;
+}
