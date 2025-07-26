@@ -159,6 +159,12 @@ nav ul li a:hover {
   padding: 2.5rem 2rem;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  /* Nytt: lägga till en finare skugga och finare padding */
+  transition: box-shadow 0.3s ease;
+}
+
+#quote:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 #quote h2 {
@@ -173,6 +179,7 @@ nav ul li a:hover {
   margin-bottom: 1.8rem;
 }
 
+/* Nytt: Label med flex för bättre justering */
 .slider-group label {
   display: flex;
   justify-content: space-between;
@@ -244,8 +251,10 @@ input[type=range]:hover::-moz-range-thumb {
   text-align: center;
 }
 
+/* Nytt: fördelning horisontellt med gap */
 .radio-group label {
-  display: inline-block;
+  display: inline-flex;  /* ändrat till inline-flex */
+  align-items: center;   /* vertikalcentrera */
   margin: 0 1.5rem;
   cursor: pointer;
   font-weight: 600;
@@ -310,6 +319,8 @@ input[type=range]:hover::-moz-range-thumb {
   text-align: center;
   color: #1e3c72;
   margin-top: 1rem;
+  /* Nytt: text-shadow för bättre läsbarhet */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 /* Kontaktformulär */
@@ -415,6 +426,7 @@ footer {
     display: flex;
   }
 
+  /* Justering av slider-label på liten skärm */
   .slider-group label {
     flex-direction: column;
     align-items: flex-start;
