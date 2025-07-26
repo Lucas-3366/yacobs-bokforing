@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yacobs Bokföring - Offert</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="header-container container">
+  <header class="container header-container">
     <div class="logo">Yacobs Bokföring</div>
     <nav>
       <ul>
@@ -28,29 +26,56 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section id="hero">
     <div class="container">
       <h1>Välkommen till Yacobs Bokföring</h1>
-      <p>Din partner för smidig och säker bokföring.</p>
-      <a href="#quote" class="btn-primary">Få din offert</a>
+      <p>Professionell och personlig bokföring för ditt företag.</p>
+      <a href="#quote" class="btn-primary">Få en offert</a>
     </div>
+  </section>
+
+  <section id="services" class="services-section container">
+    <h2>Våra tjänster</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Löpande bokföring</h3>
+        <p>Vi hanterar din dagliga bokföring så du kan fokusera på ditt företag.</p>
+      </div>
+      <div class="service-card">
+        <h3>Årsredovisning</h3>
+        <p>Vi sammanställer årsredovisningen så den blir klar och korrekt.</p>
+      </div>
+      <div class="service-card">
+        <h3>Skatterådgivning</h3>
+        <p>Vi hjälper dig optimera skatten och följa lagar och regler.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section container">
+    <h2>Om oss</h2>
+    <p>Yacobs Bokföring är ett personligt och professionellt bokföringsföretag med många års erfarenhet av små och medelstora företag.</p>
   </section>
 
   <!-- Offertsektion -->
   <section id="quote" class="container">
-    <h2>Beräkna din offert</h2>
+    <h2>Få en offert direkt</h2>
 
+    <!-- Omsättning -->
     <div class="slider-group">
-      <label for="omsattning">Omsättning per år (SEK): <span id="omsattning-text"></span></label>
-      <input type="range" id="omsattning" min="1000000" max="20000000" step="100000" value="1000000" />
+      <label for="omsattning">Omsättning per år</label>
+      <input type="range" id="omsattning" name="omsattning" min="1000000" max="20000000" step="100000" value="2000000" />
+      <div class="slider-value" id="omsattning-text">1–2 miljoner SEK</div>
     </div>
 
+    <!-- Fakturor -->
     <div class="slider-group">
-      <label for="fakturor">Antal fakturor/kvitton per månad: <span id="fakturor-text"></span></label>
-      <input type="range" id="fakturor" min="10" max="200" step="1" value="10" />
+      <label for="fakturor">Antal fakturor/kvitton per månad</label>
+      <input type="range" id="fakturor" name="fakturor" min="10" max="300" step="1" value="20" />
+      <div class="slider-value" id="fakturor-text">10–20 fakturor</div>
     </div>
 
+    <!-- Bokföringstyp -->
     <div class="radio-group">
       <label>
         <input type="radio" name="bokforing" value="lopande" checked />
@@ -60,17 +85,18 @@
       <label>
         <input type="radio" name="bokforing" value="arsredovisning" />
         <span class="checkmark"></span>
-        Årsredovisning (fast pris per år)
+        Årsredovisning (fast pris)
       </label>
     </div>
 
+    <!-- Pris -->
     <div id="price">0 kr</div>
   </section>
 
   <!-- Kontakt -->
   <section id="contact" class="contact-section container">
     <h2>Kontakta oss</h2>
-    <form>
+    <form id="contact-form">
       <label for="name">Namn</label>
       <input type="text" id="name" name="name" required />
 
@@ -78,16 +104,15 @@
       <input type="email" id="email" name="email" required />
 
       <label for="message">Meddelande</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
       <button type="submit">Skicka</button>
       <div id="form-message"></div>
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
-    &copy; 2025 Yacobs Bokföring. Alla rättigheter förbehållna.
+    <p>© 2025 Yacobs Bokföring. Alla rättigheter förbehållna.</p>
   </footer>
 
   <script src="script.js"></script>
