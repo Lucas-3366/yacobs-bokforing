@@ -3,124 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yacobs bokföring</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Yacobs Bokföring - Offert</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header id="header">
-    <div class="container header-container">
-      <div class="logo">Yacobs bokföring</div>
-      <nav id="nav">
-        <ul class="nav-links">
-          <li><a href="#hero">Hem</a></li>
-          <li><a href="#services">Tjänster</a></li>
-          <li><a href="#about">Om oss</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
+
+  <!-- Header -->
+  <header class="header-container container">
+    <div class="logo">Yacobs Bokföring</div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Hem</a></li>
+        <li><a href="#services">Tjänster</a></li>
+        <li><a href="#about">Om oss</a></li>
+        <li><a href="#quote">Offert</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </header>
 
+  <!-- Hero -->
   <section id="hero">
-    <div class="container hero-container">
-      <h1>Bokföring med ambition – för företag som vill växa.</h1>
-      <p>Trygg, enkel och professionell bokföring anpassad efter ditt företag.</p>
-      <a href="#contact" class="btn-primary">Kontakta oss</a>
+    <div class="container">
+      <h1>Välkommen till Yacobs Bokföring</h1>
+      <p>Din partner för smidig och säker bokföring.</p>
+      <a href="#quote" class="btn-primary">Få din offert</a>
     </div>
-  </section>
-
-  <section id="services" class="container services-section">
-    <h2>Våra tjänster</h2>
-    <div class="services-grid">
-      <article class="service-card">
-        <h3>Löpande bokföring</h3>
-        <p>Vi sköter din dagliga bokföring så att du kan fokusera på din verksamhet.</p>
-      </article>
-      <article class="service-card">
-        <h3>Momsredovisning</h3>
-        <p>Hjälp med momsdeklarationer och säkerställ att allt blir korrekt.</p>
-      </article>
-      <article class="service-card">
-        <h3>Årsredovisning</h3>
-        <p>Professionell årsredovisning som uppfyller alla krav.</p>
-      </article>
-      <article class="service-card">
-        <h3>Deklarationer</h3>
-        <p>Vi hjälper dig med både företags- och privatdeklarationer.</p>
-      </article>
-      <article class="service-card">
-        <h3>Rådgivning</h3>
-        <p>Personlig ekonomisk rådgivning för att stärka ditt företags ekonomi.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="about" class="container about-section">
-    <h2>Om oss</h2>
-    <p>Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. Yacobs bokföring grundades för att hjälpa ambitiösa företag att växa genom trygg och effektiv bokföring.</p>
   </section>
 
   <!-- Offertsektion -->
   <section id="quote" class="container">
-    <h2>Offertberäkning</h2>
+    <h2>Beräkna din offert</h2>
 
     <div class="slider-group">
-      <label for="omsattning">Omsättning per år:</label>
-      <input type="range" id="omsattning" name="omsattning" min="0" max="2" step="1" value="0" />
-      <div id="omsattning-text">1–2 miljoner SEK</div>
+      <label for="omsattning">Omsättning per år (SEK): <span id="omsattning-text"></span></label>
+      <input type="range" id="omsattning" min="1000000" max="20000000" step="100000" value="1000000" />
     </div>
 
     <div class="slider-group">
-      <label for="fakturor">Antal fakturor/kvitton per månad:</label>
-      <input type="range" id="fakturor" name="fakturor" min="0" max="2" step="1" value="0" />
-      <div id="fakturor-text">10–20 fakturor</div>
+      <label for="fakturor">Antal fakturor/kvitton per månad: <span id="fakturor-text"></span></label>
+      <input type="range" id="fakturor" min="10" max="200" step="1" value="10" />
     </div>
 
     <div class="radio-group">
       <label>
-        <input type="radio" name="tjanst" value="lopande" checked />
+        <input type="radio" name="bokforing" value="lopande" checked />
         <span class="checkmark"></span>
-        Löpande bokföring
+        Löpande bokföring (per månad)
       </label>
       <label>
-        <input type="radio" name="tjanst" value="arsredovisning" />
+        <input type="radio" name="bokforing" value="arsredovisning" />
         <span class="checkmark"></span>
-        Årsredovisning
+        Årsredovisning (fast pris per år)
       </label>
     </div>
 
-    <div id="price">Cirkapris: 0 kr / månad</div>
+    <div id="price">0 kr</div>
   </section>
 
-  <section id="contact" class="container contact-section">
-    <h2>Kontakt</h2>
-    <form id="contact-form" novalidate>
+  <!-- Kontakt -->
+  <section id="contact" class="contact-section container">
+    <h2>Kontakta oss</h2>
+    <form>
       <label for="name">Namn</label>
-      <input type="text" id="name" name="name" required placeholder="Ditt namn" />
+      <input type="text" id="name" name="name" required />
 
       <label for="email">E-post</label>
-      <input type="email" id="email" name="email" required placeholder="Din e-post" />
+      <input type="email" id="email" name="email" required />
 
       <label for="message">Meddelande</label>
-      <textarea id="message" name="message" rows="5" required placeholder="Skriv ditt meddelande här"></textarea>
+      <textarea id="message" name="message" rows="4" required></textarea>
 
-      <button type="submit" class="btn-primary">Skicka</button>
-      <p id="form-message"></p>
+      <button type="submit">Skicka</button>
+      <div id="form-message"></div>
     </form>
-
-    <div class="contact-info">
-      <p>Email: info@yacobsbokforing.se</p>
-      <p>Telefon: 070-123 45 67</p>
-      <p>Adress: Lilla Gatan 1, 123 45 Stockholm</p>
-    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Yacobs bokföring</p>
+    &copy; 2025 Yacobs Bokföring. Alla rättigheter förbehållna.
   </footer>
 
   <script src="script.js"></script>
