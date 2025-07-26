@@ -12,28 +12,18 @@ body {
   padding: 0 20px;
 }
 
-/* Header - mörkt tema */
-#header {
-  background-color: #121212; /* mörk bakgrund */
-  color: white;
-  padding: 1.2rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
+/* Header */
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
+  padding: 1.2rem 0;
 }
 
 .logo {
   font-weight: 700;
   font-size: 1.8rem;
-  color: white; /* vit text */
-  cursor: default;
+  color: #1e3c72;
 }
 
 nav ul {
@@ -45,14 +35,14 @@ nav ul {
 }
 
 nav ul li a {
-  color: white; /* vit text */
+  color: #1e3c72;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #ffd600; /* gul accentfärg */
+  color: #ffd600;
 }
 
 /* Hamburger */
@@ -65,7 +55,7 @@ nav ul li a:hover {
 .hamburger span {
   height: 3px;
   width: 25px;
-  background: white; /* vit hamburger */
+  background: #1e3c72;
   margin-bottom: 5px;
   border-radius: 2px;
 }
