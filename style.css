@@ -1,45 +1,140 @@
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+/* Reset och grundstil */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f6f6f6;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f9fafb;
   color: #333;
+  line-height: 1.6;
 }
 
-header {
-  background-color: #1a237e;
+/* Container för maxbredd och centrering */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header / Hero */
+.hero {
+  background: linear-gradient(135deg, #283593 0%, #5c6bc0 100%);
   color: white;
-  padding: 2rem;
   text-align: center;
+  padding: 6rem 1rem;
 }
-
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
 .slogan {
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
   font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.btn-primary {
+  background-color: #ffca28;
+  color: #283593;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #f9a825;
 }
 
-section {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  background: #e0e0e0;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-}
-
-footer {
+/* Tjänster */
+.services h2 {
   text-align: center;
-  padding: 1rem;
-  background-color: #ccc;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 1.5rem;
+}
+.service-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+}
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Om oss */
+.about {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 3rem auto;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+}
+.about h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* Kontakt */
+.contact {
+  text-align: center;
+  padding: 2rem 1rem 4rem;
+}
+.contact h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.contact p {
+  margin-bottom: 0.5rem;
+}
+.btn-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #283593;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: #1a237e;
+}
+
+/* Footer */
+footer {
+  background-color: #ececec;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsivitet */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .services h2,
+  .about h2,
+  .contact h2 {
+    font-size: 1.5rem;
+  }
 }
