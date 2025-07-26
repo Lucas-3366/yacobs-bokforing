@@ -6,7 +6,7 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
-// Offertfunktion med nivåer och textvisning
+// Offertfunktion med exakt pristrappa
 const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
 const tjanstInputs = document.querySelectorAll('input[name="tjanst"]');
@@ -14,39 +14,47 @@ const priceDisplay = document.getElementById('price');
 const omsattningText = document.getElementById('omsattning-text');
 const fakturorText = document.getElementById('fakturor-text');
 
-const omsattningOptions = {
-  1: { text: '1–2 miljoner kr', pris: 3000 },
-  2: { text: '2–10 miljoner kr', pris: 6000 },
-  3: { text: '10+ miljoner kr', pris: 12000 }
+// Text för sliders
+const omsattningLabels = {
+  1: '1–2 miljoner kr',
+  2: '2–10 miljoner kr',
+  3: '10+ miljoner kr'
 };
 
-const fakturorOptions = {
-  1: { text: '10–20 fakturor', pris: 500 },
-  2: { text: '50–100 fakturor', pris: 1200 },
-  3: { text: '200+ fakturor', pris: 3000 }
+const fakturorLabels = {
+  1: '10–20 fakturor',
+  2: '50–100 fakturor',
+  3: '200+ fakturor'
+};
+
+// Tabell enligt dina priser
+const prisTabell = {
+  '1-1': { ar: 4000, manad: 2000 },
+  '1-2': { ar: 6000, manad: 3000 },
+  '1-3': { ar: 8000, manad: 4000 },
+  '2-1': { ar: 6000, manad: 3000 },
+  '2-2': { ar: 8000, manad: 5000 },
+  '2-3': { ar: 10000, manad: 6000 },
+  '3-1': { ar: 8000, manad: 4000 },
+  '3-2': { ar: 11000, manad: 6000 },
+  '3-3': { ar: 15000, manad: 8000 }
 };
 
 function calculatePrice() {
-  // Uppdatera visad text för valen
-  omsattningText.textContent = omsattningOptions[omsattningInput.value].text;
-  fakturorText.textContent = fakturorOptions[fakturorInput.value].text;
+  const omsattningVal = omsattningInput.value;
+  const fakturorVal = fakturorInput.value;
+  const key = `${omsattningVal}-${fakturorVal}`;
+  const pris = prisTabell[key];
 
-  const omsattningPris = omsattningOptions[omsattningInput.value].pris;
-  const fakturorPris = fakturorOptions[fakturorInput.value].pris;
+  omsattningText.textContent = omsattningLabels[omsattningVal];
+  fakturorText.textContent = fakturorLabels[fakturorVal];
+
   const tjanst = [...tjanstInputs].find(input => input.checked).value;
 
-  let totalPris = omsattningPris + fakturorPris;
-
-  // Lägg till extra kostnad om årsredovisning är vald
   if (tjanst === 'arsredovisning') {
-    totalPris += 1500; // Exempel på tillägg för årsredovisning
-  }
-
-  if (tjanst === 'arsredovisning') {
-    priceDisplay.textContent = `Cirkapris: ${totalPris.toLocaleString('sv-SE')} kr / år`;
+    priceDisplay.textContent = `Cirkapris: ${pris.ar.toLocaleString('sv-SE')} kr / år`;
   } else {
-    const manadsPris = Math.round(totalPris / 12);
-    priceDisplay.textContent = `Cirkapris: ${manadsPris.toLocaleString('sv-SE')} kr / månad`;
+    priceDisplay.textContent = `Cirkapris: ${pris.manad.toLocaleString('sv-SE')} kr / månad`;
   }
 }
 
@@ -58,7 +66,7 @@ tjanstInputs.forEach(input => input.addEventListener('change', calculatePrice));
 // Startvärde
 calculatePrice();
 
-// Kontaktformulär validering (endast enkel feedback)
+// Kontaktformulär validering
 const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
