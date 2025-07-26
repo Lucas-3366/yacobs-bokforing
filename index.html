@@ -3,94 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yacobs bokföring</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Yacobs Bokföring - Om oss</title>
+  <style>
+    /* Grundinställningar */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* About */
+    .about-section {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      margin: 4rem 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center; /* Centrera all text i denna sektion */
+    }
+    .about-section h2 {
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      color: #1e3c72;
+      font-weight: 700;
+    }
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      /* Ingen margin left/right, redan centrerad */
+    }
+  </style>
 </head>
 <body>
-  <header id="header">
-    <div class="container header-container">
-      <div class="logo">Yacobs bokföring</div>
-      <nav id="nav">
-        <ul class="nav-links">
-          <li><a href="#hero">Hem</a></li>
-          <li><a href="#services">Tjänster</a></li>
-          <li><a href="#about">Om oss</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <section id="hero">
-    <div class="container hero-container">
-      <h1>Bokföring med ambition – för företag som vill växa.</h1>
-      <p>Trygg, enkel och professionell bokföring anpassad efter ditt företag.</p>
-      <a href="#contact" class="btn-primary">Kontakta oss</a>
-    </div>
-  </section>
-
-  <section id="services" class="container services-section">
-    <h2>Våra tjänster</h2>
-    <div class="services-grid">
-      <article class="service-card">
-        <h3>Löpande bokföring</h3>
-        <p>Vi sköter din dagliga bokföring så att du kan fokusera på din verksamhet.</p>
-      </article>
-      <article class="service-card">
-        <h3>Momsredovisning</h3>
-        <p>Hjälp med momsdeklarationer och säkerställ att allt blir korrekt.</p>
-      </article>
-      <article class="service-card">
-        <h3>Årsredovisning</h3>
-        <p>Professionell årsredovisning som uppfyller alla krav.</p>
-      </article>
-      <article class="service-card">
-        <h3>Deklarationer</h3>
-        <p>Vi hjälper dig med både företags- och privatdeklarationer.</p>
-      </article>
-      <article class="service-card">
-        <h3>Rådgivning</h3>
-        <p>Personlig ekonomisk rådgivning för att stärka ditt företags ekonomi.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="about" class="container about-section">
+  <section class="about-section">
     <h2>Om oss</h2>
     <p>Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. Yacobs bokföring grundades för att hjälpa ambitiösa företag att växa genom trygg och effektiv bokföring.</p>
   </section>
-
-  <section id="contact" class="container contact-section">
-    <h2>Kontakt</h2>
-    <form id="contact-form" novalidate>
-      <label for="name">Namn</label>
-      <input type="text" id="name" name="name" required placeholder="Ditt namn" />
-
-      <label for="email">E-post</label>
-      <input type="email" id="email" name="email" required placeholder="Din e-post" />
-
-      <label for="message">Meddelande</label>
-      <textarea id="message" name="message" rows="5" required placeholder="Skriv ditt meddelande här"></textarea>
-
-      <button type="submit" class="btn-primary">Skicka</button>
-      <p id="form-message"></p>
-    </form>
-
-    <div class="contact-info">
-      <p>Email: info@yacobsbokforing.se</p>
-      <p>Telefon: 070-123 45 67</p>
-      <p>Adress: Lilla Gatan 1, 123 45 Stockholm</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Yacobs bokföring</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
