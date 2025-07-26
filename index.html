@@ -1,411 +1,107 @@
-/* Importera font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yacobs Bokföring - Proffs på Ekonomi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-/* Reset och grundinställningar */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+<header>
+    <div class="container header-container">
+        <h1>Yacobs Bokföring</h1>
+        <p class="slogan">Råd & support för företag med ambition</p>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#services" class="nav-link">Tjänster</a></li>
+                <li><a href="#about" class="nav-link">Om oss</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn-primary hero-cta">Kontakta oss idag!</a>
+    </div>
+</header>
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f3ff, #ffffff);
-    color: #222;
-    font-size: 24px; /* Extra stor text */
-    line-height: 1.8;
-    overflow-x: hidden;
-}
+<section class="hero-section">
+    <div class="container hero-content">
+        <h2>Professionell bokföring och ekonomisk rådgivning för ditt företag</h2>
+        <p>Vi hjälper dig med allt från löpande bokföring till årsredovisning - enkelt, säkert och effektivt.</p>
+        <a href="#services" class="btn-secondary">Utforska våra tjänster</a>
+    </div>
+</section>
 
-/* Container maxbredd */
-.container {
-    width: 90%;
-    max-width: 1400px;
-    margin: 0 auto 6rem auto;
-}
+<main>
+    <section id="services" class="container services-section">
+        <h2>Tjänster</h2>
+        <div class="services-grid">
+            <article class="service-card" tabindex="0" data-info="Vi sköter din löpande bokföring så att allt är korrekt och i tid.">
+                <div class="icon">📚</div>
+                <h3>Löpande bokföring</h3>
+                <p>Få full koll på företagets ekonomi med vår professionella bokföringstjänst.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
 
-/* HEADER */
-header {
-    background: linear-gradient(90deg, #004e7a, #007acc);
-    color: white;
-    padding: 5rem 0 6rem;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 94, 122, 0.5);
-    position: relative;
-    z-index: 10;
-}
+            <article class="service-card" tabindex="0" data-info="Momsredovisning som håller koll på skatter och gör allt smidigt.">
+                <div class="icon">💰</div>
+                <h3>Momsredovisning</h3>
+                <p>Vi hanterar momsrapportering snabbt och noggrant, så du slipper oroa dig.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
 
-.header-container h1 {
-    font-size: 5.6rem;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 0.3rem;
-    user-select: none;
-    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
-}
+            <article class="service-card" tabindex="0" data-info="Vi hjälper dig med årsredovisning enligt gällande regler och lagar.">
+                <div class="icon">📈</div>
+                <h3>Årsredovisning</h3>
+                <p>Vi förbereder och lämnar in årsredovisningen så att allt blir rätt och enkelt.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
 
-.slogan {
-    font-size: 2.8rem;
-    font-style: italic;
-    font-weight: 400;
-    margin-bottom: 3rem;
-    user-select: none;
-}
+            <article class="service-card" tabindex="0" data-info="Skatteplanering som optimerar dina kostnader och skattebetalningar.">
+                <div class="icon">🧾</div>
+                <h3>Skatteplanering</h3>
+                <p>Minimera skatten och maximera vinsten med vår smarta skatteplanering.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
+        </div>
+    </section>
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 4.5rem;
-    margin-bottom: 3rem;
-}
+    <section id="about" class="container about-section">
+        <h2>Om oss</h2>
+        <p>
+            Jag är en nyexaminerad bokföringsstudent med stor passion för siffror och ambition att hjälpa företag att växa
+            genom trygg och professionell ekonomisk support. Med personligt engagemang och moderna verktyg ger jag alltid
+            mina kunder bästa möjliga service.
+        </p>
+    </section>
 
-.nav-links li a {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: white;
-    text-decoration: none;
-    padding: 1.2rem 3.5rem;
-    border-radius: 16px;
-    transition: background-color 0.4s ease, color 0.3s ease;
-    user-select: none;
-}
+    <section id="contact" class="container contact-section">
+        <h2>Kontakt</h2>
+        <p><strong>E-post:</strong> <a href="mailto:kontakt@yacobsbokforing.se">kontakt@yacobsbokforing.se</a></p>
+        <p><strong>Telefon:</strong> <a href="tel:+46701234567">070-123 45 67</a></p>
+        <p><strong>Adress:</strong> Storgatan 1, 123 45 Stockholm</p>
+        <div class="socials">
+            <a href="#" aria-label="Facebook" class="social-icon">👍</a>
+            <a href="#" aria-label="LinkedIn" class="social-icon">💼</a>
+            <a href="#" aria-label="Instagram" class="social-icon">📸</a>
+        </div>
+    </section>
+</main>
 
-.nav-links li a:hover,
-.nav-links li a:focus {
-    background-color: #002d48;
-    color: #b0dfff;
-    outline: none;
-    box-shadow: 0 0 15px #0099ff;
-}
+<footer>
+    <div class="container footer-container">
+        <p>© 2025 Yacobs Bokföring — Alla rättigheter reserverade</p>
+    </div>
+</footer>
 
-/* Hero section */
-.hero-section {
-    background: url('https://images.unsplash.com/photo-1556742400-b5b26f09706a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    padding: 12rem 2rem 14rem;
-    position: relative;
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.5));
-}
+<div id="info-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal-content">
+        <button class="close-btn" aria-label="Stäng popup">&times;</button>
+        <h3 id="modal-title">Mer information</h3>
+        <p id="modal-desc"></p>
+    </div>
+</div>
 
-.hero-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 122, 204, 0.6);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero-content h2 {
-    font-size: 4.2rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
-    text-shadow: 0 3px 15px rgba(0,0,0,0.6);
-    user-select: none;
-}
-
-.hero-content p {
-    font-size: 2.4rem;
-    margin-bottom: 3.5rem;
-    font-weight: 400;
-    user-select: none;
-}
-
-.btn-secondary {
-    font-size: 2.4rem;
-    padding: 1.8rem 4.5rem;
-    background: #007acc;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    box-shadow: 0 6px 20px rgba(0, 122, 204, 0.6);
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
-    user-select: none;
-    text-transform: uppercase;
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-    background-color: #005ea1;
-    box-shadow: 0 10px 30px rgba(0, 94, 161, 0.8);
-    outline: none;
-    animation: bounce 0.6s ease;
-}
-
-/* Bounce animation */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Hero CTA button in header */
-.btn-primary.hero-cta {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.8rem;
-    padding: 2rem 5rem;
-    background: #00aaff;
-    border-radius: 30px;
-    color: white;
-    font-weight: 800;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 30px rgba(0, 170, 255, 0.7);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    user-select: none;
-    text-transform: uppercase;
-    z-index: 15;
-}
-
-.btn-primary.hero-cta:hover,
-.btn-primary.hero-cta:focus {
-    background-color: #008fcc;
-    box-shadow: 0 12px 45px rgba(0, 143, 204, 0.85);
-    outline: none;
-    animation: bounce 0.6s ease;
-}
-
-/* Services */
-.services-section h2 {
-    margin-bottom: 4rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #003a6b;
-    user-select: none;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 5rem;
-}
-
-.service-card {
-    background: white;
-    border-radius: 30px;
-    padding: 5rem 4rem;
-    box-shadow: 0 16px 40px rgba(0, 122, 204, 0.15);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    outline-offset: 8px;
-    user-select: none;
-    position: relative;
-}
-
-.service-card:hover,
-.service-card:focus {
-    transform: translateY(-20px);
-    box-shadow: 0 30px 60px rgba(0, 122, 204, 0.35);
-    outline: none;
-}
-
-.service-card .icon {
-    font-size: 6.4rem;
-    margin-bottom: 3rem;
-    transition: transform 0.3s ease;
-}
-
-.service-card:hover .icon,
-.service-card:focus .icon {
-    transform: scale(1.15) rotate(10deg);
-}
-
-.service-card h3 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
-    color: #004e7a;
-}
-
-.service-card p {
-    font-size: 2.4rem;
-    color: #555;
-    margin-bottom: 3rem;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.btn-more {
-    font-size: 2.2rem;
-    background: #0099ff;
-    border: none;
-    border-radius: 18px;
-    color: white;
-    padding: 1.5rem 3rem;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-    user-select: none;
-    text-transform: uppercase;
-    box-shadow: 0 6px 20px rgba(0, 153, 255, 0.6);
-}
-
-.btn-more:hover,
-.btn-more:focus {
-    background-color: #007acc;
-    outline: none;
-    box-shadow: 0 10px 30px rgba(0, 122, 204, 0.85);
-}
-
-/* About section */
-.about-section {
-    background: #007acc22;
-    border-radius: 40px;
-    padding: 5rem 7rem;
-    margin-bottom: 8rem;
-    user-select: none;
-}
-
-.about-section h2 {
-    font-size: 4.2rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    color: #004e7a;
-}
-
-.about-section p {
-    font-size: 2.6rem;
-    line-height: 1.9;
-    max-width: 1100px;
-}
-
-/* Contact */
-.contact-section h2 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    color: #004e7a;
-    user-select: none;
-}
-
-.contact-section p {
-    font-size: 2.6rem;
-    margin-bottom: 2rem;
-    user-select: text;
-}
-
-.contact-section a {
-    color: #007acc;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.contact-section a:hover,
-.contact-section a:focus {
-    text-decoration: underline;
-    outline: none;
-}
-
-/* Social icons */
-.socials {
-    margin-top: 3rem;
-}
-
-.social-icon {
-    font-size: 4.8rem;
-    margin-right: 3.5rem;
-    cursor: pointer;
-    color: #007acc;
-    transition: color 0.3s ease;
-    user-select: none;
-}
-
-.social-icon:hover,
-.social-icon:focus {
-    color: #005ea1;
-    outline: none;
-}
-
-/* Footer */
-footer {
-    background: #003a6b;
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-    user-select: none;
-}
-
-.footer-container p {
-    font-size: 1.8rem;
-}
-
-/* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem;
-    z-index: 9999;
-}
-
-.modal.hidden {
-    display: none;
-}
-
-.modal-content {
-    background: white;
-    border-radius: 24px;
-    max-width: 700px;
-    padding: 4rem 5rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    position: relative;
-    user-select: none;
-}
-
-.modal-content h3 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: #004e7a;
-}
-
-.modal-content p {
-    font-size: 2.4rem;
-    color: #333;
-    line-height: 1.8;
-}
-
-.close-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-size: 3.8rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #007acc;
-    font-weight: 700;
-    user-select: none;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #005ea1;
-    outline: none;
-}
+<script src="script.js"></script>
+</body>
+</html>
