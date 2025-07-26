@@ -1,100 +1,107 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yacobs bokföring – Din partner i företagets ekonomi</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yacobs Bokföring - Proffs på Ekonomi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <header class="header">
+<header>
     <div class="container header-container">
-      <h1>Yacobs bokföring</h1>
-      <p class="slogan">Rådgivning och bokföring för företag med ambition</p>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#services">Tjänster</a></li>
-          <li><a href="#about">Om oss</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-      </nav>
+        <h1>Yacobs Bokföring</h1>
+        <p class="slogan">Råd & support för företag med ambition</p>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#services" class="nav-link">Tjänster</a></li>
+                <li><a href="#about" class="nav-link">Om oss</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn-primary hero-cta">Kontakta oss idag!</a>
     </div>
-  </header>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Förenkla din ekonomi med oss</h2>
-        <p>Vi hjälper dig med bokföring, deklarationer och rådgivning så att du kan fokusera på att utveckla ditt företag.</p>
-        <a href="#contact" class="btn-primary">Kontakta oss idag</a>
-      </div>
-    </section>
+<section class="hero-section">
+    <div class="container hero-content">
+        <h2>Professionell bokföring och ekonomisk rådgivning för ditt företag</h2>
+        <p>Vi hjälper dig med allt från löpande bokföring till årsredovisning - enkelt, säkert och effektivt.</p>
+        <a href="#services" class="btn-secondary">Utforska våra tjänster</a>
+    </div>
+</section>
 
+<main>
     <section id="services" class="container services-section">
-      <h2>Våra tjänster</h2>
-      <div class="services-grid">
-        <article class="service-card" tabindex="0" data-expanded="false">
-          <h3>Löpande bokföring</h3>
-          <p class="service-short">Vi sköter din dagliga bokföring så att du kan fokusera på din verksamhet.</p>
-          <p class="service-more" hidden>Vi hanterar bokföringen noggrant, inklusive verifikationer, kontering och rapportering, för att säkerställa att allt är korrekt och uppdaterat.</p>
-        </article>
-        <article class="service-card" tabindex="0" data-expanded="false">
-          <h3>Momsredovisning</h3>
-          <p class="service-short">Hjälp med momsdeklarationer och säkerställ att allt blir korrekt.</p>
-          <p class="service-more" hidden>Vi hjälper dig med momsberäkningar, deklarationer och rapportering så att du slipper bekymra dig om fel och försenade inbetalningar.</p>
-        </article>
-        <article class="service-card" tabindex="0" data-expanded="false">
-          <h3>Årsredovisning</h3>
-          <p class="service-short">Professionell årsredovisning som uppfyller alla krav.</p>
-          <p class="service-more" hidden>Vi sammanställer din årsredovisning enligt gällande regler och ser till att den är både tydlig och korrekt.</p>
-        </article>
-        <article class="service-card" tabindex="0" data-expanded="false">
-          <h3>Deklarationer</h3>
-          <p class="service-short">Vi hjälper dig med både företags- och privatdeklarationer.</p>
-          <p class="service-more" hidden>Oavsett om det gäller företagsdeklaration eller privat, guidar vi dig genom processen och säkerställer att allt görs rätt.</p>
-        </article>
-        <article class="service-card" tabindex="0" data-expanded="false">
-          <h3>Rådgivning</h3>
-          <p class="service-short">Personlig ekonomisk rådgivning för att stärka ditt företags ekonomi.</p>
-          <p class="service-more" hidden>Vi erbjuder rådgivning för allt från skatteplanering till budgetering och hjälper dig fatta välgrundade beslut.</p>
-        </article>
-      </div>
+        <h2>Tjänster</h2>
+        <div class="services-grid">
+            <article class="service-card" tabindex="0" data-info="Vi sköter din löpande bokföring så att allt är korrekt och i tid.">
+                <div class="icon">📚</div>
+                <h3>Löpande bokföring</h3>
+                <p>Få full koll på företagets ekonomi med vår professionella bokföringstjänst.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
+
+            <article class="service-card" tabindex="0" data-info="Momsredovisning som håller koll på skatter och gör allt smidigt.">
+                <div class="icon">💰</div>
+                <h3>Momsredovisning</h3>
+                <p>Vi hanterar momsrapportering snabbt och noggrant, så du slipper oroa dig.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
+
+            <article class="service-card" tabindex="0" data-info="Vi hjälper dig med årsredovisning enligt gällande regler och lagar.">
+                <div class="icon">📈</div>
+                <h3>Årsredovisning</h3>
+                <p>Vi förbereder och lämnar in årsredovisningen så att allt blir rätt och enkelt.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
+
+            <article class="service-card" tabindex="0" data-info="Skatteplanering som optimerar dina kostnader och skattebetalningar.">
+                <div class="icon">🧾</div>
+                <h3>Skatteplanering</h3>
+                <p>Minimera skatten och maximera vinsten med vår smarta skatteplanering.</p>
+                <button class="btn-more">Läs mer</button>
+            </article>
+        </div>
     </section>
 
-    <section id="about" class="about-section container">
-      <h2>Om oss</h2>
-      <p>
-        Jag är en nyexaminerad bokföringsstudent med passion för att hjälpa företag med ambition att växa och lyckas. Hos Yacobs bokföring får du personlig service och tydlig rådgivning anpassad efter just ditt företags behov.
-      </p>
+    <section id="about" class="container about-section">
+        <h2>Om oss</h2>
+        <p>
+            Jag är en nyexaminerad bokföringsstudent med stor passion för siffror och ambition att hjälpa företag att växa
+            genom trygg och professionell ekonomisk support. Med personligt engagemang och moderna verktyg ger jag alltid
+            mina kunder bästa möjliga service.
+        </p>
     </section>
 
-    <section id="contact" class="contact-section container">
-      <h2>Kontakta oss</h2>
-      <form id="contactForm" class="contact-form" novalidate>
-        <label for="name">Namn</label>
-        <input type="text" id="name" name="name" placeholder="Ditt namn" required />
-
-        <label for="email">E-post</label>
-        <input type="email" id="email" name="email" placeholder="din@mail.com" required />
-
-        <label for="message">Meddelande</label>
-        <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." rows="5" required></textarea>
-
-        <button type="submit" class="btn-primary">Skicka</button>
-        <p id="formMessage" class="form-message"></p>
-      </form>
+    <section id="contact" class="container contact-section">
+        <h2>Kontakt</h2>
+        <p><strong>E-post:</strong> <a href="mailto:kontakt@yacobsbokforing.se">kontakt@yacobsbokforing.se</a></p>
+        <p><strong>Telefon:</strong> <a href="tel:+46701234567">070-123 45 67</a></p>
+        <p><strong>Adress:</strong> Storgatan 1, 123 45 Stockholm</p>
+        <div class="socials">
+            <a href="#" aria-label="Facebook" class="social-icon">👍</a>
+            <a href="#" aria-label="LinkedIn" class="social-icon">💼</a>
+            <a href="#" aria-label="Instagram" class="social-icon">📸</a>
+        </div>
     </section>
-  </main>
+</main>
 
-  <footer class="footer">
+<footer>
     <div class="container footer-container">
-      <p>© 2025 Yacobs bokföring. Alla rättigheter reserverade.</p>
-      <p>Email: info@yacobsbokforing.se | Telefon: 08-123 456 78 | Adress: Storgatan 1, 111 22 Stockholm</p>
+        <p>© 2025 Yacobs Bokföring — Alla rättigheter reserverade</p>
     </div>
-  </footer>
+</footer>
 
-  <script src="script.js"></script>
+<div id="info-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal-content">
+        <button class="close-btn" aria-label="Stäng popup">&times;</button>
+        <h3 id="modal-title">Mer information</h3>
+        <p id="modal-desc"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
