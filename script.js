@@ -37,6 +37,11 @@ function calculatePrice() {
 
   let totalPris = omsattningPris + fakturorPris;
 
+  // Lägg till extra kostnad om årsredovisning är vald
+  if (tjanst === 'arsredovisning') {
+    totalPris += 1500; // Exempel på tillägg för årsredovisning
+  }
+
   if (tjanst === 'arsredovisning') {
     priceDisplay.textContent = `Cirkapris: ${totalPris.toLocaleString('sv-SE')} kr / år`;
   } else {
@@ -46,12 +51,8 @@ function calculatePrice() {
 }
 
 // Event listeners
-omsattningInput.addEventListener('input', () => {
-  calculatePrice();
-});
-fakturorInput.addEventListener('input', () => {
-  calculatePrice();
-});
+omsattningInput.addEventListener('input', calculatePrice);
+fakturorInput.addEventListener('input', calculatePrice);
 tjanstInputs.forEach(input => input.addEventListener('change', calculatePrice));
 
 // Startvärde
