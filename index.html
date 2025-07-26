@@ -89,6 +89,39 @@
     <p>Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. Yacobs bokföring grundades för att hjälpa ambitiösa företag att växa genom trygg och effektiv bokföring.</p>
   </section>
 
+  <section id="quote" class="quote-section">
+  <div class="container">
+    <h2>Räkna ut ett ungefärligt pris</h2>
+    <form id="quote-form">
+      <label for="oms">Omsättning (SEK/år)</label>
+      <input type="range" id="oms" name="oms" min="0" max="3" value="0">
+      <div class="range-labels">
+        <span>0-2M</span>
+        <span>2-10M</span>
+        <span>10M+</span>
+      </div>
+
+      <label for="fakt">Antal fakturor/kvitton per månad</label>
+      <input type="range" id="fakt" name="fakt" min="0" max="2" value="0">
+      <div class="range-labels">
+        <span>10–20</span>
+        <span>50–100</span>
+        <span>200+</span>
+      </div>
+
+      <label>Tjänstetyp</label>
+      <div class="radio-group">
+        <label><input type="radio" name="typ" value="löpande" checked> Löpande bokföring</label>
+        <label><input type="radio" name="typ" value="årsredovisning"> Årsredovisning</label>
+      </div>
+
+      <div class="price-output">
+        <strong>Ungefärligt pris: <span id="quote-result">-</span> kr</strong>
+      </div>
+    </form>
+  </div>
+</section>
+  
   <section id="contact" class="container contact-section">
     <h2>Kontakt</h2>
     <form id="contact-form" novalidate>
