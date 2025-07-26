@@ -27,9 +27,14 @@
 
   <section id="hero">
     <div class="container hero-container">
-      <h1>Bokföring med ambition – för företag som vill växa.</h1>
-      <p>Trygg, enkel och professionell bokföring anpassad efter ditt företag.</p>
-      <a href="#contact" class="btn-primary">Kontakta oss</a>
+      <div class="hero-text">
+        <h1>Bokföring med ambition – för företag som vill växa.</h1>
+        <p>Trygg, enkel och professionell bokföring anpassad efter ditt företag.</p>
+        <a href="#contact" class="btn-primary">Kontakta oss</a>
+      </div>
+      <div class="hero-image">
+        <img src="dator-illustration.png" alt="Illustration av dator och bokföring" />
+      </div>
     </div>
   </section>
 
@@ -62,6 +67,36 @@
   <section id="about" class="container about-section">
     <h2>Om oss</h2>
     <p>Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. Yacobs bokföring grundades för att hjälpa ambitiösa företag att växa genom trygg och effektiv bokföring.</p>
+  </section>
+
+  <!-- Offertsektion (uppdaterad) -->
+  <section id="quote" class="container">
+    <h2>Offertberäkning</h2>
+
+    <div class="slider-group">
+      <label for="omsattning" id="label-omsattning">Omsättning per år (tkr): 1–2 miljoner kr</label>
+      <input type="range" id="omsattning" name="omsattning" min="1" max="3" step="1" value="1" />
+    </div>
+
+    <div class="slider-group">
+      <label for="fakturor" id="label-fakturor">Antal fakturor/kvitton per månad: 10–20 fakturor</label>
+      <input type="range" id="fakturor" name="fakturor" min="1" max="3" step="1" value="1" />
+    </div>
+
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="tjanst" value="lopande" checked />
+        <span class="checkmark"></span>
+        Löpande bokföring (per månad)
+      </label>
+      <label>
+        <input type="radio" name="tjanst" value="arsredovisning" />
+        <span class="checkmark"></span>
+        Årsredovisning (per år)
+      </label>
+    </div>
+
+    <div id="price">Cirkapris: 0 kr / månad</div>
   </section>
 
   <section id="contact" class="container contact-section">
