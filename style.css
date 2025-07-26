@@ -169,6 +169,7 @@ nav ul li a:focus {
   margin: 0 auto;
   font-size: 1.1rem;
   line-height: 1.8;
+  text-align: center; /* Här är den tillagda raden för att centrera texten */
 }
 
 /* Contact */
