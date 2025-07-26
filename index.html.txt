@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yacobs bokföring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Yacobs bokföring</h1>
+    <p class="slogan">Bokföring med ambition – för företag som vill växa.</p>
+  </header>
+
+  <section id="services">
+    <h2>Våra tjänster</h2>
+    <ul>
+      <li>Löpande bokföring</li>
+      <li>Momsredovisning</li>
+      <li>Årsredovisning</li>
+      <li>Deklarationer</li>
+      <li>Rådgivning</li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>Om oss</h2>
+    <p>
+      Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. 
+      Yacobs bokföring är startat med målet att hjälpa ambitiösa småföretagare att få 
+      ordning på sin ekonomi – tryggt, enkelt och personligt.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <p>E-post: info@yacobsbokforing.se</p>
+    <p>Telefon: 070-123 45 67</p>
+    <p>Adress: Lilla Gatan 1, 123 45 Stockholm</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Yacobs bokföring</p>
+  </footer>
+</body>
+</html>
