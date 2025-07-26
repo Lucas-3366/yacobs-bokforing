@@ -1,110 +1,68 @@
-// Hämta element, kontrollera att de finns
+// Hamburger-meny toggling
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('nav ul');
-const form = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
 
-if (hamburger && navLinks) {
-  // Hamburger meny toggling
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
 
-  // Smooth scroll till sektioner
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      navLinks.classList.remove('active'); // stäng meny på mobil
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-} else {
-  console.warn('Hamburger eller nav-links saknas i DOM.');
-}
+// Offertfunktion
 
-if (form && formMessage) {
-  // Enkel formulärvalidering och feedback
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log("Formulär skickas");
-    formMessage.textContent = '';
-    formMessage.style.color = '#d93025'; // standard fel-färg
-
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    console.log({ name, email, message });
-
-    if (!name || !email || !message) {
-      formMessage.textContent = 'Vänligen fyll i alla fält.';
-      console.log("Fel: tomma fält");
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      formMessage.textContent = 'Vänligen ange en giltig e-postadress.';
-      console.log("Fel: ogiltig e-post");
-      return;
-    }
-
-    // Här kan du lägga till kod för att skicka formulär till server via AJAX eller liknande
-    formMessage.style.color = 'green';
-    formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
-    form.reset();
-  });
-} else {
-  console.warn('Formulär eller meddelande-element saknas i DOM.');
-}
-
-function validateEmail(email) {
-  const re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  return re.test(email.toLowerCase());
-}
-
-/* --- Offertfunktion --- */
 const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
-const typSelect = document.getElementById('bokforingstyp');
-const offertPrice = document.getElementById('offert-price');
+const tjanstInputs = document.querySelectorAll('input[name="tjanst"]');
+const priceDisplay = document.getElementById('price');
 
-if (omsattningInput && fakturorInput && typSelect && offertPrice) {
-  // Uppdatera pris när något ändras
-  [omsattningInput, fakturorInput, typSelect].forEach(el => {
-    el.addEventListener('input', updatePrice);
-  });
+function calculatePrice() {
+  const omsattning = +omsattningInput.value * 1000; // omvandla tkr till kr
+  const fakturor = +fakturorInput.value;
+  const tjanst = [...tjanstInputs].find(input => input.checked).value;
 
-  // Initial prisuppdatering
-  updatePrice();
-} else {
-  console.warn('Något offert-element saknas i DOM.');
-}
+  let grundpris = 500;
+  if (omsattning > 1000000) grundpris += (omsattning - 1000000) * 0.0003;
+  if (omsattning > 3000000) grundpris += (omsattning - 3000000) * 0.0001;
 
-function updatePrice() {
-  const omsattning = Number(omsattningInput.value);
-  const fakturor = Number(fakturorInput.value);
-  const typ = typSelect.value; // "lopande" eller "arsredovisning"
+  let fakturapris = fakturor * 20;
 
-  // Grundpris per omsättningsintervall
-  let prisOmsattning = 0;
-  if (omsattning <= 500000) prisOmsattning = 500;
-  else if (omsattning <= 1000000) prisOmsattning = 900;
-  else prisOmsattning = 1500;
-
-  // Pris per faktura/kvitto
-  const prisFaktura = 15;
-  let prisFakturor = fakturor * prisFaktura;
-
-  // Typ-tillägg
-  let typPris = 0;
-  if (typ === 'arsredovisning') {
-    typPris = 1500; // extra för årsredovisning
+  let tjanstPris = 0;
+  if (tjanst === 'arsredovisning') {
+    tjanstPris = 1200;
   }
 
-  const totalPris = prisOmsattning + prisFakturor + typPris;
+  let total = (grundpris + fakturapris + tjanstPris) / 12;
+  total = Math.round(total);
 
-  offertPrice.textContent = `${totalPris.toLocaleString('sv-SE')} kr / månad`;
+  priceDisplay.textContent = `Cirkapris: ${total.toLocaleString('sv-SE')} kr / månad`;
 }
+
+omsattningInput.addEventListener('input', () => {
+  document.getElementById('omsattning-value').textContent = omsattningInput.value;
+  calculatePrice();
+});
+fakturorInput.addEventListener('input', () => {
+  document.getElementById('fakturor-value').textContent = fakturorInput.value;
+  calculatePrice();
+});
+tjanstInputs.forEach(input => input.addEventListener('change', calculatePrice));
+
+// Startvärde
+calculatePrice();
+
+// Kontaktformulär validering (endast enkel feedback)
+const contactForm = document.getElementById('contact-form');
+const formMessage = document.getElementById('form-message');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  if (!contactForm.checkValidity()) {
+    formMessage.textContent = 'Vänligen fyll i alla fält korrekt.';
+    formMessage.style.color = 'red';
+    return;
+  }
+
+  formMessage.style.color = '#1e3c72';
+  formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
+
+  contactForm.reset();
+});
