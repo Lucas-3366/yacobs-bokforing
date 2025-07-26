@@ -1,277 +1,422 @@
-/* Reset och grund */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-}
-
+/* Grundinställningar */
 body {
-  background: #f9f9f9;
-  line-height: 1.6;
-  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f8faff;
+  color: #333;
 }
 
-/* Container maxbredd och centrerat */
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* --- Ändrad HEADER (från gamla) --- */
-header {
-  background-color: #002244; /* Mörkblå */
-  padding: 25px 0;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-header .container {
+/* Header */
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.2rem 0;
 }
 
-header h1 {
-  font-size: 2rem;
-  color: #fff;
+.logo {
   font-weight: 700;
-  letter-spacing: 3px;
+  font-size: 1.8rem;
+  color: #1e3c72;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 2rem;
+  padding-left: 0;
+  margin: 0;
 }
 
 nav ul li a {
-  color: #ffffff;
+  color: #1e3c72;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  transition: color 0.25s ease;
+  transition: color 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a:focus {
-  color: #ffdb58; /* Gul highlight */
+nav ul li a:hover {
+  color: #ffd600;
 }
 
-/* --- Ändrad HERO (från gamla) --- */
-.hero {
-  background: linear-gradient(120deg, #004080, #002244);
-  color: white;
-  padding: 100px 20px 120px;
-  text-align: center;
-  position: relative;
-}
-
-.hero-content {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.hero h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-.hero p {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 45px;
-  line-height: 1.4;
-}
-
-.hero img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* --- Resten (Våra tjänster och neråt) är samma som i din nya --- */
-
-.tjanster {
-  background-color: #fff;
-  padding: 60px 0;
-  text-align: center;
-}
-
-.tjanster h2 {
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  color: #003366;
-  font-weight: 700;
-}
-
-.tjanster ul {
-  list-style: none;
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-
-.tjanster ul li {
-  background-color: #e6f0ff;
-  color: #003366;
-  padding: 18px 30px;
-  border-radius: 40px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  flex: 1 1 130px;
-  max-width: 180px;
-}
-
-.offert {
-  background-color: #f0f7ff;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.offert h2 {
-  font-size: 2.4rem;
-  margin-bottom: 30px;
-  color: #003366;
-  font-weight: 700;
-}
-
-.offert form {
-  max-width: 480px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.offert label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #003366;
-}
-
-.offert select {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 2px solid #ccc;
-  margin-bottom: 25px;
-  transition: border-color 0.3s ease;
-}
-
-.offert select:focus {
-  border-color: #005599;
-  outline: none;
-}
-
-.offert p {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #003366;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.kontakt {
-  background-color: #fff;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.kontakt h2 {
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  color: #003366;
-  font-weight: 700;
-}
-
-.kontakt form {
-  max-width: 480px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.kontakt label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #003366;
-}
-
-.kontakt input,
-.kontakt textarea {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 25px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  font-family: inherit;
-}
-
-.kontakt input:focus,
-.kontakt textarea:focus {
-  border-color: #005599;
-  outline: none;
-}
-
-.kontakt button {
-  background-color: #003366;
-  color: #fff;
-  font-size: 1.1rem;
-  padding: 14px 30px;
-  border: none;
-  border-radius: 40px;
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
   cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #1e3c72;
+  margin-bottom: 5px;
+  border-radius: 2px;
+}
+
+/* Hero */
+#hero {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background: #ffd600;
+  color: #1e3c72;
   font-weight: 700;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #e6c700;
+}
+
+/* Services */
+.services-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin: 3rem 0 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.6rem;
+}
+
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  color: #1e3c72;
+  margin-bottom: 0.8rem;
+}
+
+/* Om oss */
+.about-section {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  margin: 4rem 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.about-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  font-weight: 700;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Offertsektion */
+#quote {
+  background: white;
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+#quote h2 {
+  color: #1e3c72;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.slider-group {
+  margin-bottom: 1.8rem;
+}
+
+.slider-group label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #1e3c72;
+  margin-bottom: 0.4rem;
+}
+
+.slider-description {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+input[type=range] {
   width: 100%;
-  max-width: 180px;
-  transition: background-color 0.3s ease;
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.kontakt button:hover,
-.kontakt button:focus {
-  background-color: #005599;
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1e3c72;
+  cursor: pointer;
+  border: 2px solid #ffd600;
+  transition: background 0.3s ease;
 }
 
-/* RESPONSIVT */
+input[type=range]:hover::-webkit-slider-thumb {
+  background: #16335b;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1e3c72;
+  cursor: pointer;
+  border: 2px solid #ffd600;
+  transition: background 0.3s ease;
+}
+
+input[type=range]:hover::-moz-range-thumb {
+  background: #16335b;
+}
+
+.slider-value {
+  text-align: right;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: -0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Radio buttons */
+.radio-group {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.radio-group label {
+  display: inline-block;
+  margin: 0 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1e3c72;
+  position: relative;
+  padding-left: 30px;
+  user-select: none;
+  font-size: 1.1rem;
+}
+
+.radio-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-group .checkmark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 22px;
+  width: 22px;
+  background-color: #ddd;
+  border-radius: 50%;
+  border: 2px solid #1e3c72;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.radio-group label:hover .checkmark {
+  background-color: #cce0ff;
+}
+
+.radio-group input[type="radio"]:checked ~ .checkmark {
+  background-color: #1e3c72;
+  border-color: #ffd600;
+}
+
+.radio-group .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radio-group input[type="radio"]:checked ~ .checkmark:after {
+  display: block;
+}
+
+.radio-group .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd600;
+}
+
+/* Pris-text */
+#price {
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1e3c72;
+  margin-top: 1rem;
+}
+
+/* Kontaktformulär */
+.contact-section {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 4rem auto 6rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-section label {
+  font-weight: 600;
+  color: #1e3c72;
+}
+
+.contact-section input,
+.contact-section textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  outline: none;
+  border-color: #1e3c72;
+}
+
+.contact-section button {
+  background: #1e3c72;
+  color: #ffd600;
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-section button:hover {
+  background: #16335b;
+}
+
+#form-message {
+  font-weight: 600;
+  color: #1e3c72;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: #1e3c72;
+  color: #ffd600;
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  font-size: 1rem;
+}
+
+/* Responsiv */
 @media (max-width: 768px) {
-  header .container {
-    flex-direction: column;
-    gap: 15px;
-  }
-
   nav ul {
+    display: none;
     flex-direction: column;
-    gap: 15px;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    width: 160px;
+    z-index: 100;
   }
 
-  .tjanster ul {
+  nav ul.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .slider-group label {
     flex-direction: column;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .offert form,
-  .kontakt form {
-    padding: 20px;
+    align-items: flex-start;
   }
 }
