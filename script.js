@@ -6,41 +6,50 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
-// Offertfunktion
-
+// Offertfunktion med nivåer och textvisning
 const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
 const tjanstInputs = document.querySelectorAll('input[name="tjanst"]');
 const priceDisplay = document.getElementById('price');
+const omsattningText = document.getElementById('omsattning-text');
+const fakturorText = document.getElementById('fakturor-text');
+
+const omsattningOptions = {
+  1: { text: '1–2 miljoner kr', pris: 3000 },
+  2: { text: '2–10 miljoner kr', pris: 6000 },
+  3: { text: '10+ miljoner kr', pris: 12000 }
+};
+
+const fakturorOptions = {
+  1: { text: '10–20 fakturor', pris: 500 },
+  2: { text: '50–100 fakturor', pris: 1200 },
+  3: { text: '200+ fakturor', pris: 3000 }
+};
 
 function calculatePrice() {
-  const omsattning = +omsattningInput.value * 1000; // omvandla tkr till kr
-  const fakturor = +fakturorInput.value;
+  // Uppdatera visad text för valen
+  omsattningText.textContent = omsattningOptions[omsattningInput.value].text;
+  fakturorText.textContent = fakturorOptions[fakturorInput.value].text;
+
+  const omsattningPris = omsattningOptions[omsattningInput.value].pris;
+  const fakturorPris = fakturorOptions[fakturorInput.value].pris;
   const tjanst = [...tjanstInputs].find(input => input.checked).value;
 
-  let grundpris = 500;
-  if (omsattning > 1000000) grundpris += (omsattning - 1000000) * 0.0003;
-  if (omsattning > 3000000) grundpris += (omsattning - 3000000) * 0.0001;
+  let totalPris = omsattningPris + fakturorPris;
 
-  let fakturapris = fakturor * 20;
-
-  let tjanstPris = 0;
   if (tjanst === 'arsredovisning') {
-    tjanstPris = 1200;
+    priceDisplay.textContent = `Cirkapris: ${totalPris.toLocaleString('sv-SE')} kr / år`;
+  } else {
+    const manadsPris = Math.round(totalPris / 12);
+    priceDisplay.textContent = `Cirkapris: ${manadsPris.toLocaleString('sv-SE')} kr / månad`;
   }
-
-  let total = (grundpris + fakturapris + tjanstPris) / 12;
-  total = Math.round(total);
-
-  priceDisplay.textContent = `Cirkapris: ${total.toLocaleString('sv-SE')} kr / månad`;
 }
 
+// Event listeners
 omsattningInput.addEventListener('input', () => {
-  document.getElementById('omsattning-value').textContent = omsattningInput.value;
   calculatePrice();
 });
 fakturorInput.addEventListener('input', () => {
-  document.getElementById('fakturor-value').textContent = fakturorInput.value;
   calculatePrice();
 });
 tjanstInputs.forEach(input => input.addEventListener('change', calculatePrice));
