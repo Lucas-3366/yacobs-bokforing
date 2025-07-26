@@ -169,7 +169,99 @@ nav ul li a:focus {
   margin: 0 auto;
   font-size: 1.1rem;
   line-height: 1.8;
-  text-align: center; /* Här är den tillagda raden för att centrera texten */
+  text-align: center;
+}
+
+/* Offertfunktion */
+#offert {
+  background: white;
+  max-width: 700px;
+  margin: 3rem auto 4rem;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  color: #1e3c72;
+}
+
+#offert h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.slider-group {
+  margin-bottom: 1.8rem;
+}
+
+.slider-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.slider-group input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1e3c72;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(30,60,114,0.6);
+  transition: background 0.3s ease;
+}
+
+.slider-group input[type="range"]:hover::-webkit-slider-thumb {
+  background: #16335b;
+}
+
+.slider-group input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1e3c72;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(30,60,114,0.6);
+  transition: background 0.3s ease;
+}
+
+#offert select {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3c72;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+#offert select:focus {
+  outline: none;
+  border-color: #1e3c72;
+}
+
+#offert .price {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffd600;
+  margin-top: 1.5rem;
+  letter-spacing: 1px;
 }
 
 /* Contact */
@@ -270,58 +362,4 @@ footer {
   .hamburger {
     display: flex;
   }
-}
-
-/* Offertfunktion */
-.quote-section {
-  background: #ffffff;
-  padding: 2rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  max-width: 700px;
-  margin: 3rem auto;
-  font-family: 'Poppins', sans-serif;
-  color: #1e3c72;
-}
-.quote-section h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.slider-group {
-  margin-bottom: 1.5rem;
-}
-.slider-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.slider-group input[type="range"] {
-  width: 100%;
-}
-.slider-value {
-  font-weight: 700;
-  color: #ffd600;
-  margin-top: 0.25rem;
-  text-align: right;
-}
-select {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease;
-}
-select:focus {
-  border-color: #1e3c72;
-  outline: none;
-}
-.quote-price {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1e3c72;
 }
