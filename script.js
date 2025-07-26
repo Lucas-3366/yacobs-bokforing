@@ -64,3 +64,41 @@ function validateEmail(email) {
   const re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
   return re.test(email.toLowerCase());
 }
+
+.quote-section {
+  background: #f3f6fb;
+  padding: 3rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 4rem;
+}
+.quote-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1e3c72;
+}
+#quote-form label {
+  display: block;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+.radio-group {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.price-output {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
