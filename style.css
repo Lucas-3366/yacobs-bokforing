@@ -159,11 +159,6 @@ nav ul li a:hover {
   padding: 2.5rem 2rem;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-#quote:hover {
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 #quote h2 {
@@ -178,7 +173,6 @@ nav ul li a:hover {
   margin-bottom: 1.8rem;
 }
 
-/* Label med flex för bättre justering */
 .slider-group label {
   display: flex;
   justify-content: space-between;
@@ -250,10 +244,8 @@ input[type=range]:hover::-moz-range-thumb {
   text-align: center;
 }
 
-/* Fördelning horisontellt med gap */
 .radio-group label {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   margin: 0 1.5rem;
   cursor: pointer;
   font-weight: 600;
@@ -318,7 +310,6 @@ input[type=range]:hover::-moz-range-thumb {
   text-align: center;
   color: #1e3c72;
   margin-top: 1rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 /* Kontaktformulär */
@@ -424,29 +415,8 @@ footer {
     display: flex;
   }
 
-  /* Justering av slider-label på liten skärm */
   .slider-group label {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-/* Ny media query för mobil, max 480px */
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.4rem;
-  }
-
-  #hero h1 {
-    font-size: 2rem;
-  }
-
-  #quote h2 {
-    font-size: 1.8rem;
-  }
-
-  #hero, #quote {
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 }
