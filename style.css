@@ -112,108 +112,150 @@ nav ul li a:hover {
   background: white;
   border-radius: 12px;
   padding: 1.8rem 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
   transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
 }
 
 .service-card h3 {
   color: #1e3c72;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
-/* About */
+/* Om oss */
 .about-section {
-  padding: 3rem 0;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #444;
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  margin: 4rem 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-/* Offertsektionen */
+.about-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  font-weight: 700;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Offertsektion */
 #quote {
   background: white;
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2.5rem 2rem;
   border-radius: 12px;
-  padding: 2rem;
-  margin: 3rem 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 #quote h2 {
   color: #1e3c72;
-  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
 .slider-group {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.8rem;
 }
 
 .slider-group label {
+  display: flex;
+  justify-content: space-between;
   font-weight: 600;
-  display: block;
-  margin-bottom: 0.4rem;
   color: #1e3c72;
+  margin-bottom: 0.4rem;
 }
 
-input[type="range"] {
-  -webkit-appearance: none;
+.slider-description {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+input[type=range] {
   width: 100%;
+  -webkit-appearance: none;
   height: 8px;
-  background: #e4e4e4;
   border-radius: 5px;
+  background: #ddd;
   outline: none;
-  transition: background 0.3s ease;
+  margin-bottom: 0.3rem;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 22px;
   height: 22px;
+  border-radius: 50%;
   background: #1e3c72;
   cursor: pointer;
-  border-radius: 50%;
   border: 2px solid #ffd600;
-  margin-top: -7px;
   transition: background 0.3s ease;
 }
 
-input[type="range"]:hover::-webkit-slider-thumb {
-  background: #283d71;
+input[type=range]:hover::-webkit-slider-thumb {
+  background: #16335b;
 }
 
-input[type="range"]::-moz-range-thumb {
+input[type=range]::-moz-range-thumb {
   width: 22px;
   height: 22px;
+  border-radius: 50%;
   background: #1e3c72;
   cursor: pointer;
-  border-radius: 50%;
   border: 2px solid #ffd600;
   transition: background 0.3s ease;
 }
 
+input[type=range]:hover::-moz-range-thumb {
+  background: #16335b;
+}
+
+.slider-value {
+  text-align: right;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: -0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Radio buttons */
 .radio-group {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 1.6rem;
-  justify-content: center;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .radio-group label {
+  display: inline-block;
+  margin: 0 1.5rem;
   cursor: pointer;
-  position: relative;
-  padding-left: 30px;
   font-weight: 600;
   color: #1e3c72;
+  position: relative;
+  padding-left: 30px;
   user-select: none;
+  font-size: 1.1rem;
 }
 
-/* Radio custom */
 .radio-group input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -222,18 +264,23 @@ input[type="range"]::-moz-range-thumb {
 
 .radio-group .checkmark {
   position: absolute;
-  top: 2px;
   left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #e4e4e4;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 22px;
+  width: 22px;
+  background-color: #ddd;
   border-radius: 50%;
   border: 2px solid #1e3c72;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.radio-group label:hover .checkmark {
+  background-color: #cce0ff;
 }
 
 .radio-group input[type="radio"]:checked ~ .checkmark {
-  background-color: #ffd600;
+  background-color: #1e3c72;
   border-color: #ffd600;
 }
 
@@ -248,134 +295,128 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .radio-group .checkmark:after {
-  top: 4px;
-  left: 4px;
-  width: 10px;
-  height: 10px;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #1e3c72;
-  position: absolute;
+  background: #ffd600;
 }
 
-/* Prisvisning */
+/* Pris-text */
 #price {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-align: center;
   color: #1e3c72;
+  margin-top: 1rem;
 }
 
-/* Kontakt */
+/* Kontaktformulär */
 .contact-section {
   background: white;
+  padding: 3rem 2rem;
   border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  max-width: 700px;
+  margin: 4rem auto 6rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .contact-section h2 {
+  font-size: 2.5rem;
   color: #1e3c72;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-form {
-  max-width: 600px;
-  margin: 0 auto 2rem;
+.contact-section form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
-form label {
+.contact-section label {
   font-weight: 600;
   color: #1e3c72;
 }
 
-form input,
-form textarea {
+.contact-section input,
+.contact-section textarea {
   padding: 0.8rem 1rem;
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
   font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
   transition: border-color 0.3s ease;
 }
 
-form input:focus,
-form textarea:focus {
-  border-color: #ffd600;
+.contact-section input:focus,
+.contact-section textarea:focus {
   outline: none;
+  border-color: #1e3c72;
 }
 
-form button {
-  align-self: center;
-  padding: 0.9rem 3rem;
+.contact-section button {
+  background: #1e3c72;
+  color: #ffd600;
+  padding: 1rem 0;
   font-weight: 700;
-  background: #ffd600;
-  color: #1e3c72;
+  font-size: 1.1rem;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-form button:hover {
-  background: #e6c700;
+.contact-section button:hover {
+  background: #16335b;
 }
 
 #form-message {
+  font-weight: 600;
+  color: #1e3c72;
+  margin-top: 0.6rem;
   text-align: center;
-  font-weight: 700;
-  color: #d33;
-}
-
-/* Kontaktinfo */
-.contact-info {
-  text-align: center;
-  color: #444;
-  font-size: 1rem;
-  line-height: 1.6;
 }
 
 /* Footer */
 footer {
   background: #1e3c72;
-  color: white;
+  color: #ffd600;
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 1.1px;
+  font-size: 1rem;
 }
 
-/* Mobilanpassning */
+/* Responsiv */
 @media (max-width: 768px) {
   nav ul {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    background: white;
-    width: 70%;
-    height: 100vh;
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem 1.5rem;
-    box-shadow: -3px 0 8px rgba(0, 0, 0, 0.1);
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 9999;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    width: 160px;
+    z-index: 100;
   }
 
-  nav ul.open {
-    transform: translateX(0);
-  }
-
-  nav ul li {
-    margin-bottom: 1.8rem;
+  nav ul.active {
+    display: flex;
   }
 
   .hamburger {
     display: flex;
   }
-}
 
+  .slider-group label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
