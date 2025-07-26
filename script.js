@@ -1,122 +1,118 @@
-// Hamburger meny
+// Hamburger-meny
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('nav ul');
 
 hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
+  navLinks.classList.toggle('open');
 });
 
-// Offertfunktion
+// Offertberäkning
 const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
-const prisElement = document.getElementById('price');
-const labelOms = document.getElementById('label-omsattning');
-const labelFak = document.getElementById('label-fakturor');
 const tjanstRadios = document.querySelectorAll('input[name="tjanst"]');
+const priceDisplay = document.getElementById('price');
 
-// Prislista (i kr)
-const prislista = {
-  lopande: {
-    omsattning: {
-      1: 1500,
-      2: 2500,
-      3: 4000,
-    },
-    fakturor: {
-      1: 0,
-      2: 400,
-      3: 1200,
-    }
-  },
-  arsredovisning: {
-    omsattning: {
-      1: 5000,
-      2: 8000,
-      3: 12000,
-    },
-    fakturor: {
-      1: 0,
-      2: 0,
-      3: 0,
-    }
-  }
+const omsattningLabels = {
+  1: '1–2 miljoner kr',
+  2: '2–10 miljoner kr',
+  3: '10+ miljoner kr',
+};
+
+const fakturorLabels = {
+  1: '10–20 fakturor',
+  2: '50–100 fakturor',
+  3: '200+ fakturor',
+};
+
+/* Prislista
+ * Format: pris i kr per månad eller per år beroende på tjänst
+ * Prislistan är ett objekt med två nycklar, "lopande" och "arsredovisning"
+ * Varje innehåller en matris [omsättningIndex][fakturorIndex] med pris.
+ */
+const priser = {
+  lopande: [
+    [2500, 3500, 4500], // 1–2m
+    [3500, 4500, 6500], // 2–10m
+    [5000, 6500, 8500], // 10+m
+  ],
+  arsredovisning: [
+    [7000, 8000, 9500],
+    [9000, 11000, 15000],
+    [14000, 18000, 21000],
+  ],
 };
 
 function updateLabels() {
-  // Omsättning
-  const oms = +omsattningInput.value;
-  let omsText = '';
-  if (oms === 1) omsText = '1–2 miljoner kr';
-  else if (oms === 2) omsText = '2–10 miljoner kr';
-  else if (oms === 3) omsText = '10+ miljoner kr';
-  labelOms.textContent = `Omsättning per år (tkr): ${omsText}`;
-
-  // Fakturor
-  const fak = +fakturorInput.value;
-  let fakText = '';
-  if (fak === 1) fakText = '10–20 fakturor';
-  else if (fak === 2) fakText = '50–100 fakturor';
-  else if (fak === 3) fakText = '200+ fakturor';
-  labelFak.textContent = `Antal fakturor/kvitton per månad: ${fakText}`;
+  document.getElementById('label-omsattning').textContent =
+    `Omsättning per år (tkr): ${omsattningLabels[omsattningInput.value]}`;
+  document.getElementById('label-fakturor').textContent =
+    `Antal fakturor/kvitton per månad: ${fakturorLabels[fakturorInput.value]}`;
 }
 
-function calculatePrice() {
-  const oms = +omsattningInput.value;
-  const fak = +fakturorInput.value;
-  const tjanst = [...tjanstRadios].find(r => r.checked)?.value || 'lopande';
+function updatePrice() {
+  const oms = parseInt(omsattningInput.value, 10) - 1;
+  const fakt = parseInt(fakturorInput.value, 10) - 1;
+  const tjanstVald = Array.from(tjanstRadios).find(r => r.checked).value;
 
-  const omsPris = prislista[tjanst].omsattning[oms] || 0;
-  const fakPris = prislista[tjanst].fakturor[fak] || 0;
-  let total = omsPris + fakPris;
+  let pris = priser[tjanstVald][oms][fakt];
+  let suffix = tjanstVald === 'lopande' ? 'kr / månad' : 'kr / år';
 
-  let period = tjanst === 'lopande' ? 'månad' : 'år';
-
-  prisElement.textContent = `Cirkapris: ${total.toLocaleString('sv-SE')} kr / ${period}`;
+  priceDisplay.textContent = `Cirkapris: ${pris.toLocaleString('sv-SE')} ${suffix}`;
 }
+
+// Initiera etiketter och pris
+updateLabels();
+updatePrice();
 
 omsattningInput.addEventListener('input', () => {
   updateLabels();
-  calculatePrice();
+  updatePrice();
 });
 fakturorInput.addEventListener('input', () => {
   updateLabels();
-  calculatePrice();
+  updatePrice();
 });
-tjanstRadios.forEach(radio => radio.addEventListener('change', calculatePrice));
+tjanstRadios.forEach(radio => radio.addEventListener('change', updatePrice));
 
-// Initial setup
-updateLabels();
-calculatePrice();
-
-// Kontaktformulär validering och simulering av skickande
-const form = document.getElementById('contact-form');
+// Kontaktformulärvalidering
+const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
-form.addEventListener('submit', e => {
+contactForm.addEventListener('submit', e => {
   e.preventDefault();
+
   formMessage.textContent = '';
+  formMessage.style.color = '#d33';
 
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
+  const name = contactForm.name.value.trim();
+  const email = contactForm.email.value.trim();
+  const message = contactForm.message.value.trim();
 
-  if (!name || !email || !message) {
-    formMessage.textContent = 'Vänligen fyll i alla fält.';
+  if (!name) {
+    formMessage.textContent = 'Vänligen fyll i ditt namn.';
+    contactForm.name.focus();
+    return;
+  }
+  if (!email || !validateEmail(email)) {
+    formMessage.textContent = 'Vänligen ange en giltig e-postadress.';
+    contactForm.email.focus();
+    return;
+  }
+  if (!message) {
+    formMessage.textContent = 'Vänligen skriv ett meddelande.';
+    contactForm.message.focus();
     return;
   }
 
-  // Enkel e-postvalidering
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    formMessage.textContent = 'Ange en giltig e-postadress.';
-    return;
-  }
+  // Skicka formulär (här kan man lägga till riktig post till server)
+  formMessage.style.color = 'green';
+  formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer så snart som möjligt.';
 
-  formMessage.style.color = '#1e3c72';
-  formMessage.textContent = 'Skickar...';
-
-  setTimeout(() => {
-    formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
-    form.reset();
-  }, 1500);
+  contactForm.reset();
 });
+
+function validateEmail(email) {
+  // Enkel e-postvalidering
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email.toLowerCase());
+}
