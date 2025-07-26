@@ -1,49 +1,45 @@
-// Expand/collapse tjänstekort
-document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () => toggleCard(card));
-  card.addEventListener('keydown', e => {
-    if(e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleCard(card);
+// Modal för att visa mer info om tjänster
+const serviceCards = document.querySelectorAll('.service-card');
+const modal = document.getElementById('info-modal');
+const modalDesc = document.getElementById('modal-desc');
+const closeBtn = document.querySelector('.close-btn');
+
+serviceCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const info = card.getAttribute('data-info');
+        modalDesc.textContent = info;
+        modal.classList.remove('hidden');
+        closeBtn.focus();
+    });
+
+    card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+        }
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    serviceCards[0].focus();
+});
+
+modal.addEventListener('click', (e) => {
+    if(e.target === modal) {
+        modal.classList.add('hidden');
+        serviceCards[0].focus();
     }
-  });
 });
 
-function toggleCard(card) {
-  const expanded = card.classList.toggle('expanded');
-  const moreInfo = card.querySelector('.service-more');
-  if(expanded) {
-    moreInfo.removeAttribute('hidden');
-  } else {
-    moreInfo.setAttribute('hidden', '');
-  }
-}
-
-// Kontaktformulär med enkel validering
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
-
-contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-
-  const name = contactForm.name.value.trim();
-  const email = contactForm.email.value.trim();
-  const message = contactForm.message.value.trim();
-
-  if (!name || !validateEmail(email) || !message) {
-    formMessage.style.color = 'red';
-    formMessage.textContent = 'Vänligen fyll i alla fält med giltig information.';
-    return;
-  }
-
-  // Simulera skickad meddelande
-  formMessage.style.color = '#1e3c72';
-  formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
-
-  contactForm.reset();
+// Smooth scroll för nav länkar
+document.querySelectorAll('a.nav-link, .btn-secondary, .btn-primary.hero-cta').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if(targetSection) {
+            targetSection.scrollIntoView({behavior: 'smooth'});
+        }
+    });
 });
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email.toLowerCase());
-}
