@@ -1,85 +1,110 @@
-// Hamburgermeny för mobil
+// Hämta element, kontrollera att de finns
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-
-hamburger.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    navLinks.classList.toggle('active');
-  }
-});
-
-// Kontaktformulär validering (förenklad)
-const contactForm = document.getElementById('contact-form');
+const navLinks = document.querySelector('nav ul');
+const form = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  formMessage.textContent = '';
-  formMessage.style.color = 'red';
+if (hamburger && navLinks) {
+  // Hamburger meny toggling
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
 
-  const name = contactForm.name.value.trim();
-  const email = contactForm.email.value.trim();
-  const message = contactForm.message.value.trim();
+  // Smooth scroll till sektioner
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      navLinks.classList.remove('active'); // stäng meny på mobil
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+} else {
+  console.warn('Hamburger eller nav-links saknas i DOM.');
+}
 
-  if (!name || !email || !message) {
-    formMessage.textContent = 'Vänligen fyll i alla fält.';
-    return;
-  }
+if (form && formMessage) {
+  // Enkel formulärvalidering och feedback
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log("Formulär skickas");
+    formMessage.textContent = '';
+    formMessage.style.color = '#d93025'; // standard fel-färg
 
-  if (!validateEmail(email)) {
-    formMessage.textContent = 'Ange en giltig e-postadress.';
-    return;
-  }
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  formMessage.style.color = 'green';
-  formMessage.textContent = 'Tack! Ditt meddelande har skickats.';
-  contactForm.reset();
-});
+    console.log({ name, email, message });
+
+    if (!name || !email || !message) {
+      formMessage.textContent = 'Vänligen fyll i alla fält.';
+      console.log("Fel: tomma fält");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      formMessage.textContent = 'Vänligen ange en giltig e-postadress.';
+      console.log("Fel: ogiltig e-post");
+      return;
+    }
+
+    // Här kan du lägga till kod för att skicka formulär till server via AJAX eller liknande
+    formMessage.style.color = 'green';
+    formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
+    form.reset();
+  });
+} else {
+  console.warn('Formulär eller meddelande-element saknas i DOM.');
+}
 
 function validateEmail(email) {
-  // Enkel e-postvalidering
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  return re.test(email.toLowerCase());
 }
 
-// --- Offertfunktion ---
+/* --- Offertfunktion --- */
+const omsattningInput = document.getElementById('omsattning');
+const fakturorInput = document.getElementById('fakturor');
+const typSelect = document.getElementById('bokforingstyp');
+const offertPrice = document.getElementById('offert-price');
 
-const turnoverInput = document.getElementById('turnover');
-const documentsInput = document.getElementById('documents');
-const serviceInputs = document.querySelectorAll('input[name="service"]');
-const priceOutput = document.getElementById('price-output');
+if (omsattningInput && fakturorInput && typSelect && offertPrice) {
+  // Uppdatera pris när något ändras
+  [omsattningInput, fakturorInput, typSelect].forEach(el => {
+    el.addEventListener('input', updatePrice);
+  });
 
-function calculatePrice() {
-  const turnover = parseFloat(turnoverInput.value); // miljoner SEK
-  const documents = parseInt(documentsInput.value);
-  const service = document.querySelector('input[name="service"]:checked').value;
-
-  // Grundpris baserat på omsättning
-  // Exempel: 3000 SEK per miljon omsättning
-  let basePrice = turnover * 3000;
-
-  // Tillägg per faktura/kvitto
-  // Exempel: 10 SEK per dokument
-  let docPrice = documents * 10;
-
-  // Service multiplikator
-  // Löpande bokföring: 1x, årsredovisning: 1.8x
-  let serviceMultiplier = service === 'arsredovisning' ? 1.8 : 1;
-
-  let totalMonthly = (basePrice + docPrice) * serviceMultiplier / 12;
-
-  // Runda till närmsta 10 SEK
-  totalMonthly = Math.round(totalMonthly / 10) * 10;
-
-  priceOutput.textContent = `Cirka pris: ${totalMonthly.toLocaleString('sv-SE')} SEK/mån`;
+  // Initial prisuppdatering
+  updatePrice();
+} else {
+  console.warn('Något offert-element saknas i DOM.');
 }
 
-turnoverInput.addEventListener('input', calculatePrice);
-documentsInput.addEventListener('input', calculatePrice);
-serviceInputs.forEach(input => input.addEventListener('change', calculatePrice));
+function updatePrice() {
+  const omsattning = Number(omsattningInput.value);
+  const fakturor = Number(fakturorInput.value);
+  const typ = typSelect.value; // "lopande" eller "arsredovisning"
 
-calculatePrice(); // Startvärde
+  // Grundpris per omsättningsintervall
+  let prisOmsattning = 0;
+  if (omsattning <= 500000) prisOmsattning = 500;
+  else if (omsattning <= 1000000) prisOmsattning = 900;
+  else prisOmsattning = 1500;
+
+  // Pris per faktura/kvitto
+  const prisFaktura = 15;
+  let prisFakturor = fakturor * prisFaktura;
+
+  // Typ-tillägg
+  let typPris = 0;
+  if (typ === 'arsredovisning') {
+    typPris = 1500; // extra för årsredovisning
+  }
+
+  const totalPris = prisOmsattning + prisFakturor + typPris;
+
+  offertPrice.textContent = `${totalPris.toLocaleString('sv-SE')} kr / månad`;
+}
