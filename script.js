@@ -1,77 +1,96 @@
-// Hamburger-meny (för mobil)
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('nav ul');
-
-hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-});
-
-// Offertfunktion
-
+// Element
 const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
-const bokforingRadios = document.querySelectorAll('input[name="bokforing"]');
-const priceDisplay = document.getElementById('price');
 const omsattningText = document.getElementById('omsattning-text');
 const fakturorText = document.getElementById('fakturor-text');
+const priceDisplay = document.getElementById('price');
+const bokforingRadios = document.querySelectorAll('input[name="bokforing"]');
 
-function getOmsattningKategori(value) {
-  if (value <= 2000000) return '1-2';
-  if (value <= 10000000) return '2-10';
-  return '10+';
+// Priser enligt tabell
+const priser = {
+  "1-2": {
+    "10-20": { arsredovisning: 4000, lopande: 2000 },
+    "50-100": { arsredovisning: 6000, lopande: 3000 },
+    "200+": { arsredovisning: 8000, lopande: 4000 },
+  },
+  "2-10": {
+    "10-20": { arsredovisning: 6000, lopande: 3000 },
+    "50-100": { arsredovisning: 8000, lopande: 5000 },
+    "200+": { arsredovisning: 10000, lopande: 6000 },
+  },
+  "10+": {
+    "10-20": { arsredovisning: 8000, lopande: 4000 },
+    "50-100": { arsredovisning: 11000, lopande: 6000 },
+    "200+": { arsredovisning: 15000, lopande: 8000 },
+  }
+};
+
+// Funktioner för kategorier
+function getOmsattningKategori(v) {
+  if (v <= 2000000) return "1-2";
+  if (v <= 10000000) return "2-10";
+  return "10+";
 }
 
-function getFakturorKategori(value) {
-  if (value <= 20) return '10-20';
-  if (value <= 100) return '50-100';
-  return '200+';
+function getFakturorKategori(v) {
+  if (v <= 20) return "10-20";
+  if (v <= 100) return "50-100";
+  return "200+";
 }
 
-function calculatePrice(omsattningValue, fakturorValue, bokforingVal) {
-  const omsattningKat = getOmsattningKategori(omsattningValue);
-  const fakturorKat = getFakturorKategori(fakturorValue);
+// Uppdatera text som visas under sliders
+function updateTextLabels() {
+  const omsValue = +omsattningInput.value;
+  const faktValue = +fakturorInput.value;
 
-  const prices = {
-    '1-2': {
-      '10-20': { 'arsredovisning': 4000, 'lopande': 2000 },
-      '50-100': { 'arsredovisning': 6000, 'lopande': 3000 },
-      '200+': { 'arsredovisning': 8000, 'lopande': 4000 },
-    },
-    '2-10': {
-      '10-20': { 'arsredovisning': 6000, 'lopande': 3000 },
-      '50-100': { 'arsredovisning': 8000, 'lopande': 5000 },
-      '200+': { 'arsredovisning': 10000, 'lopande': 6000 },
-    },
-    '10+': {
-      '10-20': { 'arsredovisning': 8000, 'lopande': 4000 },
-      '50-100': { 'arsredovisning': 11000, 'lopande': 6000 },
-      '200+': { 'arsredovisning': 15000, 'lopande': 8000 },
-    }
-  };
+  omsattningText.textContent = (() => {
+    if (omsValue <= 2000000) return "1–2 miljoner SEK";
+    if (omsValue <= 10000000) return "2–10 miljoner SEK";
+    return "10+ miljoner SEK";
+  })();
 
-  return prices[omsattningKat][fakturorKat][bokforingVal];
+  fakturorText.textContent = (() => {
+    if (faktValue <= 20) return "10–20 fakturor";
+    if (faktValue <= 100) return "50–100 fakturor";
+    return "200+ fakturor";
+  })();
 }
 
-function updateTexts() {
-  const omsattningVal = Number(omsattningInput.value);
-  const fakturorVal = Number(fakturorInput.value);
-  const bokforingVal = [...bokforingRadios].find(r => r.checked)?.value || 'lopande';
+// Uppdatera priset
+function updatePrice() {
+  const omsKategori = getOmsattningKategori(+omsattningInput.value);
+  const faktKategori = getFakturorKategori(+fakturorInput.value);
+  const selectedType = [...bokforingRadios].find(r => r.checked).value;
 
-  omsattningText.textContent = omsattningVal.toLocaleString('sv-SE') + ' kr';
-  fakturorText.textContent = fakturorVal + ' fakturor/kvitton';
+  const prisObj = priser[omsKategori][faktKategori];
 
-  const pris = calculatePrice(omsattningVal, fakturorVal, bokforingVal);
-
-  if (bokforingVal === 'lopande') {
-    priceDisplay.textContent = pris.toLocaleString('sv-SE') + ' kr / mån';
+  if (selectedType === 'lopande') {
+    priceDisplay.textContent = prisObj.lopande + " kr/månad";
   } else {
-    priceDisplay.textContent = pris.toLocaleString('sv-SE') + ' kr / år';
+    priceDisplay.textContent = prisObj.arsredovisning + " kr/år";
   }
 }
 
-omsattningInput.addEventListener('input', updateTexts);
-fakturorInput.addEventListener('input', updateTexts);
-bokforingRadios.forEach(radio => radio.addEventListener('change', updateTexts));
+// Kör vid förändring
+function onInputChange() {
+  updateTextLabels();
+  updatePrice();
+}
 
-// Kör initialt när sidan laddas
-updateTexts();
+// Eventlisteners
+omsattningInput.addEventListener('input', onInputChange);
+fakturorInput.addEventListener('input', onInputChange);
+bokforingRadios.forEach(radio => radio.addEventListener('change', onInputChange));
+
+// Initiera vid laddning
+onInputChange();
+
+// Hamburger-meny funktionalitet (om du använder den)
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+}
