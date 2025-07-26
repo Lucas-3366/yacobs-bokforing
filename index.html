@@ -41,7 +41,6 @@
           <li><a href="#hero">Hem</a></li>
           <li><a href="#services">Tjänster</a></li>
           <li><a href="#about">Om oss</a></li>
-          <li><a href="#offert">Offert</a></li> <!-- Lagt till i menyn -->
           <li><a href="#contact">Kontakt</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
@@ -90,32 +89,43 @@
     <p>Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. Yacobs bokföring grundades för att hjälpa ambitiösa företag att växa genom trygg och effektiv bokföring.</p>
   </section>
 
-  <!-- NY OFFERTSEKTION -->
-  <section id="offert" class="container offert-section">
-    <h2>Få en offert</h2>
-    <form id="offert-form">
-      <div class="slider-group">
-        <label for="omsattning">Omsättning per år</label>
-        <input type="range" id="omsattning" min="0" max="2" step="1" value="0" />
-        <div id="omsattning-text" class="slider-value">1–2 miljoner SEK</div>
-      </div>
+  <section id="offert" class="offert-section">
+  <h2>Offertberäkning</h2>
+  <p>Justera inställningarna för att se ungefärligt pris för din bokföringstjänst.</p>
 
-      <div class="slider-group">
-        <label for="fakturor">Antal fakturor/kvitton per månad</label>
-        <input type="range" id="fakturor" min="0" max="2" step="1" value="0" />
-        <div id="fakturor-text" class="slider-value">10–20 fakturor</div>
-      </div>
+  <div class="slider-group">
+    <label for="omsattning">Omsättning per år (SEK):</label>
+    <select id="omsattning">
+      <option value="low">&lt; 2 miljoner</option>
+      <option value="mid">2–10 miljoner</option>
+      <option value="high">&gt; 10 miljoner</option>
+    </select>
+  </div>
 
-      <div class="radio-group">
-        <label><input type="radio" name="tjanst" value="lopande" checked /> Löpande bokföring</label>
-        <label><input type="radio" name="tjanst" value="arsredovisning" /> Årsredovisning</label>
-      </div>
+  <div class="slider-group">
+    <label for="fakturor">Antal fakturor/kvitton per månad:</label>
+    <select id="fakturor">
+      <option value="low">&lt; 20</option>
+      <option value="mid">20–50</option>
+      <option value="high">&gt; 50</option>
+    </select>
+  </div>
 
-      <div class="offert-result">
-        <strong>Pris: </strong><span id="pris">0 kr / månad</span>
-      </div>
-    </form>
-  </section>
+  <div class="slider-group">
+    <label for="tjanst">Typ av tjänst:</label>
+    <select id="tjanst">
+      <option value="lopande">Löpande bokföring</option>
+      <option value="arsredovisning">Årsredovisning</option>
+    </select>
+  </div>
+
+  <div class="resultat">
+    <p>Du har valt: <span id="valda-val"></span></p>
+    <p>Ungefärligt pris: <strong><span id="pris"></span></strong></p>
+  </div>
+
+  <button id="be-offert-btn">Be om offert</button>
+</section>
 
   <section id="contact" class="container contact-section">
     <h2>Kontakt</h2>
@@ -147,3 +157,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
