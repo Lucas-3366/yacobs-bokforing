@@ -1,26 +1,7 @@
-/* Importera font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-
-/* Reset och grundinställningar */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f3ff, #ffffff);
-    color: #222;
-    font-size: 24px; /* Extra stor text */
-    line-height: 1.8;
-    overflow-x: hidden;
-}
-
-/* Container maxbredd */
+/* Container med bättre maxbredd och centrerad layout */
 .container {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1300px; /* Lite bredare men maxar så det ser bra ut */
     margin: 0 auto 6rem auto;
 }
 
@@ -28,7 +9,7 @@ body {
 header {
     background: linear-gradient(90deg, #004e7a, #007acc);
     color: white;
-    padding: 5rem 0 6rem;
+    padding: 4rem 0 5rem;
     text-align: center;
     box-shadow: 0 6px 20px rgba(0, 94, 122, 0.5);
     position: relative;
@@ -36,11 +17,12 @@ header {
 }
 
 .header-container h1 {
-    font-size: 5.6rem;
+    font-size: 5.8rem;
     font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 0.3rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.4rem;
     user-select: none;
+    white-space: nowrap; /* Gör så det inte bryts på två rader */
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
 }
 
@@ -52,116 +34,25 @@ header {
     user-select: none;
 }
 
+/* Navigation - justera så alla länkar sitter på samma rad och får jämnt mellanrum */
 .nav-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 4.5rem;
+    gap: 5rem;
     margin-bottom: 3rem;
+    flex-wrap: nowrap;
 }
 
-.nav-links li a {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: white;
-    text-decoration: none;
-    padding: 1.2rem 3.5rem;
-    border-radius: 16px;
-    transition: background-color 0.4s ease, color 0.3s ease;
-    user-select: none;
-}
-
-.nav-links li a:hover,
-.nav-links li a:focus {
-    background-color: #002d48;
-    color: #b0dfff;
-    outline: none;
-    box-shadow: 0 0 15px #0099ff;
-}
-
-/* Hero section */
-.hero-section {
-    background: url('https://images.unsplash.com/photo-1556742400-b5b26f09706a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    padding: 12rem 2rem 14rem;
-    position: relative;
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.5));
-}
-
-.hero-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 122, 204, 0.6);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero-content h2 {
-    font-size: 4.2rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
-    text-shadow: 0 3px 15px rgba(0,0,0,0.6);
-    user-select: none;
-}
-
-.hero-content p {
-    font-size: 2.4rem;
-    margin-bottom: 3.5rem;
-    font-weight: 400;
-    user-select: none;
-}
-
-.btn-secondary {
-    font-size: 2.4rem;
-    padding: 1.8rem 4.5rem;
-    background: #007acc;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    box-shadow: 0 6px 20px rgba(0, 122, 204, 0.6);
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
-    user-select: none;
-    text-transform: uppercase;
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-    background-color: #005ea1;
-    box-shadow: 0 10px 30px rgba(0, 94, 161, 0.8);
-    outline: none;
-    animation: bounce 0.6s ease;
-}
-
-/* Bounce animation */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Hero CTA button in header */
+/* Hero CTA knapp i header placerad längst ner under nav */
 .btn-primary.hero-cta {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.8rem;
-    padding: 2rem 5rem;
+    position: relative; /* Istället för absolut, så den inte överlappar kontakt */
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 3rem;
+    padding: 2.2rem 6rem;
     background: #00aaff;
-    border-radius: 30px;
+    border-radius: 40px;
     color: white;
     font-weight: 800;
     border: none;
@@ -170,7 +61,8 @@ header {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
     text-transform: uppercase;
-    z-index: 15;
+    margin-bottom: 3rem;
+    text-align: center;
 }
 
 .btn-primary.hero-cta:hover,
@@ -181,151 +73,60 @@ header {
     animation: bounce 0.6s ease;
 }
 
-/* Services */
-.services-section h2 {
-    margin-bottom: 4rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #003a6b;
-    user-select: none;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 5rem;
-}
-
-.service-card {
-    background: white;
-    border-radius: 30px;
-    padding: 5rem 4rem;
-    box-shadow: 0 16px 40px rgba(0, 122, 204, 0.15);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    outline-offset: 8px;
-    user-select: none;
-    position: relative;
-}
-
-.service-card:hover,
-.service-card:focus {
-    transform: translateY(-20px);
-    box-shadow: 0 30px 60px rgba(0, 122, 204, 0.35);
-    outline: none;
-}
-
-.service-card .icon {
-    font-size: 6.4rem;
-    margin-bottom: 3rem;
-    transition: transform 0.3s ease;
-}
-
-.service-card:hover .icon,
-.service-card:focus .icon {
-    transform: scale(1.15) rotate(10deg);
-}
-
-.service-card h3 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
-    color: #004e7a;
-}
-
-.service-card p {
-    font-size: 2.4rem;
-    color: #555;
-    margin-bottom: 3rem;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.btn-more {
-    font-size: 2.2rem;
-    background: #0099ff;
-    border: none;
-    border-radius: 18px;
-    color: white;
-    padding: 1.5rem 3rem;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-    user-select: none;
-    text-transform: uppercase;
-    box-shadow: 0 6px 20px rgba(0, 153, 255, 0.6);
-}
-
-.btn-more:hover,
-.btn-more:focus {
-    background-color: #007acc;
-    outline: none;
-    box-shadow: 0 10px 30px rgba(0, 122, 204, 0.85);
-}
-
-/* About section */
+/* Om oss justering så det är helt centrerat */
 .about-section {
     background: #007acc22;
     border-radius: 40px;
-    padding: 5rem 7rem;
+    padding: 6rem 8rem;
     margin-bottom: 8rem;
     user-select: none;
-}
-
-.about-section h2 {
-    font-size: 4.2rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    color: #004e7a;
-}
-
-.about-section p {
-    font-size: 2.6rem;
-    line-height: 1.9;
     max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
-/* Contact */
-.contact-section h2 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    color: #004e7a;
+/* Kontakt justering så text och knapp inte krockar */
+.contact-section {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 6rem 3rem;
+    border-radius: 40px;
+    background: #e8f4fc;
+    box-shadow: 0 12px 35px rgba(0, 122, 204, 0.3);
     user-select: none;
 }
 
-.contact-section p {
+.contact-info p {
     font-size: 2.6rem;
-    margin-bottom: 2rem;
-    user-select: text;
+    margin-bottom: 1.7rem;
+    font-weight: 600;
 }
 
-.contact-section a {
+.contact-info a {
     color: #007acc;
-    text-decoration: none;
     font-weight: 700;
+    text-decoration: none;
 }
 
-.contact-section a:hover,
-.contact-section a:focus {
+.contact-info a:hover,
+.contact-info a:focus {
     text-decoration: underline;
     outline: none;
 }
 
-/* Social icons */
+/* Sociala ikoner */
 .socials {
-    margin-top: 3rem;
+    margin-top: 3.5rem;
 }
 
 .social-icon {
-    font-size: 4.8rem;
-    margin-right: 3.5rem;
-    cursor: pointer;
+    font-size: 4.6rem;
+    margin: 0 3rem;
     color: #007acc;
+    cursor: pointer;
     transition: color 0.3s ease;
     user-select: none;
 }
@@ -336,65 +137,123 @@ header {
     outline: none;
 }
 
+/* Tjänster - korten blir större och med mer spacing */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 5.5rem 4rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 32px;
+    padding: 4.8rem 4.8rem 5.5rem;
+    box-shadow: 0 12px 40px rgba(0, 122, 204, 0.1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 122, 204, 0.25);
+    outline: none;
+}
+
+.service-card .icon {
+    font-size: 6.4rem;
+    margin-bottom: 3.2rem;
+    user-select: none;
+}
+
+.service-card h3 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 2.8rem;
+    color: #004e7a;
+    text-align: center;
+}
+
+.service-card p {
+    font-size: 2.6rem;
+    color: #555;
+    margin-bottom: 4rem;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.btn-more {
+    font-size: 2.4rem;
+    background: #0099ff;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    padding: 1.7rem 4.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    text-transform: uppercase;
+    box-shadow: 0 7px 22px rgba(0, 153, 255, 0.65);
+    align-self: center;
+    letter-spacing: 0.07em;
+    width: 180px;
+}
+
+.btn-more:hover,
+.btn-more:focus {
+    background-color: #007acc;
+    outline: none;
+    box-shadow: 0 12px 35px rgba(0, 122, 204, 0.85);
+}
+
 /* Footer */
 footer {
     background: #003a6b;
     color: white;
-    padding: 3rem 0;
+    padding: 3.5rem 0;
     text-align: center;
     user-select: none;
 }
 
 .footer-container p {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
+    font-weight: 400;
 }
 
-/* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem;
-    z-index: 9999;
-}
-
-.modal.hidden {
-    display: none;
-}
-
+/* Modal (popup) justerad för snygghet */
 .modal-content {
     background: white;
-    border-radius: 24px;
-    max-width: 700px;
-    padding: 4rem 5rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border-radius: 32px;
+    max-width: 750px;
+    padding: 5rem 6rem;
+    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.3);
     position: relative;
     user-select: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .modal-content h3 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
     color: #004e7a;
 }
 
 .modal-content p {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     color: #333;
-    line-height: 1.8;
+    line-height: 1.9;
+    user-select: text;
 }
 
 .close-btn {
     position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-size: 3.8rem;
+    top: 1.8rem;
+    right: 2.5rem;
+    font-size: 4rem;
     background: none;
     border: none;
     cursor: pointer;
