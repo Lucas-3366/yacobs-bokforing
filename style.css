@@ -272,47 +272,63 @@ footer {
   }
 }
 
-// Offertberäkning
-const omsSlider = document.getElementById('oms');
-const faktSlider = document.getElementById('fakt');
-const typeRadios = document.querySelectorAll('input[name="typ"]');
-const quoteResult = document.getElementById('quote-result');
-
-function calculateQuote() {
-  const oms = parseInt(omsSlider.value);
-  const fakt = parseInt(faktSlider.value);
-  const type = document.querySelector('input[name="typ"]:checked').value;
-
-  let price = 0;
-
-  // Löpande bokföring
-  if (type === 'löpande') {
-    if (oms === 0) price += 2000;
-    else if (oms === 1) price += 4000;
-    else if (oms === 2) price += 8000;
-    else price += 10000;
-
-    if (fakt === 0) price += 0;
-    else if (fakt === 1) price += 2000;
-    else price += 5000;
-  }
-
-  // Årsredovisning
-  if (type === 'årsredovisning') {
-    if (oms === 0) price = 5000;
-    else if (oms === 1) price = 8000;
-    else price = 12000;
-
-    if (fakt === 1) price += 1000;
-    else if (fakt === 2) price += 2000;
-  }
-
-  quoteResult.textContent = price.toLocaleString('sv-SE');
+/* --- Offert-sektion styling --- */
+.offert-section {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  text-align: left;
+  color: #0a2a47;
 }
-
-// Uppdatera vid ändring
-[omsSlider, faktSlider, ...typeRadios].forEach(el => {
-  el.addEventListener('input', calculateQuote);
-});
-calculateQuote(); // Initiera direkt
-
+.offert-section h2 {
+  font-size: 2.2rem;
+  color: #1e3c72;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+.offert-section p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.slider-group {
+  margin-bottom: 1.25rem;
+}
+.slider-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #1e3c72;
+}
+.slider-group select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+.slider-group select:hover,
+.slider-group select:focus {
+  border-color: #1e3c72;
+  outline: none;
+}
+.slider-group input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+#offert-price {
+  margin-top: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffd600;
+  text-align: center;
+  background: #1e3c72;
+  padding: 0.75rem 1rem;
+  border-radius: 30px;
+  user-select: none;
+}
