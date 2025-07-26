@@ -87,4 +87,3 @@ contactForm.addEventListener('submit', (e) => {
 
   contactForm.reset();
 });
-
