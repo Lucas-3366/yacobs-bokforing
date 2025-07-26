@@ -1,68 +1,128 @@
-// Hamburger-meny toggling
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('nav ul');
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yacobs bokföring</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="header">
+    <div class="container header-container">
+      <div class="logo">Yacobs bokföring</div>
+      <nav id="nav">
+        <ul class="nav-links">
+          <li><a href="#hero">Hem</a></li>
+          <li><a href="#services">Tjänster</a></li>
+          <li><a href="#about">Om oss</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+  <section id="hero">
+    <div class="container hero-container">
+      <h1>Bokföring med ambition – för företag som vill växa.</h1>
+      <p>Trygg, enkel och professionell bokföring anpassad efter ditt företag.</p>
+      <a href="#contact" class="btn-primary">Kontakta oss</a>
+    </div>
+  </section>
 
-// Offertfunktion
+  <section id="services" class="container services-section">
+    <h2>Våra tjänster</h2>
+    <div class="services-grid">
+      <article class="service-card">
+        <h3>Löpande bokföring</h3>
+        <p>Vi sköter din dagliga bokföring så att du kan fokusera på din verksamhet.</p>
+      </article>
+      <article class="service-card">
+        <h3>Momsredovisning</h3>
+        <p>Hjälp med momsdeklarationer och säkerställ att allt blir korrekt.</p>
+      </article>
+      <article class="service-card">
+        <h3>Årsredovisning</h3>
+        <p>Professionell årsredovisning som uppfyller alla krav.</p>
+      </article>
+      <article class="service-card">
+        <h3>Deklarationer</h3>
+        <p>Vi hjälper dig med både företags- och privatdeklarationer.</p>
+      </article>
+      <article class="service-card">
+        <h3>Rådgivning</h3>
+        <p>Personlig ekonomisk rådgivning för att stärka ditt företags ekonomi.</p>
+      </article>
+    </div>
+  </section>
 
-const omsattningInput = document.getElementById('omsattning');
-const fakturorInput = document.getElementById('fakturor');
-const tjanstInputs = document.querySelectorAll('input[name="tjanst"]');
-const priceDisplay = document.getElementById('price');
+  <section id="about" class="container about-section">
+    <h2>Om oss</h2>
+    <p>Jag är en nyexaminerad bokföringsstudent med passion för siffror och struktur. Yacobs bokföring grundades för att hjälpa ambitiösa företag att växa genom trygg och effektiv bokföring.</p>
+  </section>
 
-function calculatePrice() {
-  const omsattning = +omsattningInput.value * 1000; // omvandla tkr till kr
-  const fakturor = +fakturorInput.value;
-  const tjanst = [...tjanstInputs].find(input => input.checked).value;
+  <!-- Offertsektion (uppdaterad) -->
+  <section id="quote" class="container">
+    <h2>Offertberäkning</h2>
 
-  let grundpris = 500;
-  if (omsattning > 1000000) grundpris += (omsattning - 1000000) * 0.0003;
-  if (omsattning > 3000000) grundpris += (omsattning - 3000000) * 0.0001;
+    <div class="slider-group">
+      <label for="omsattning">Omsättning per år:</label>
+      <input type="range" id="omsattning" name="omsattning" min="1" max="3" step="1" value="1" />
+      <div id="omsattning-text" class="slider-value">1–2 miljoner kr</div>
+    </div>
 
-  let fakturapris = fakturor * 20;
+    <div class="slider-group">
+      <label for="fakturor">Antal fakturor/kvitton per månad:</label>
+      <input type="range" id="fakturor" name="fakturor" min="1" max="3" step="1" value="1" />
+      <div id="fakturor-text" class="slider-value">10–20 fakturor</div>
+    </div>
 
-  let tjanstPris = 0;
-  if (tjanst === 'arsredovisning') {
-    tjanstPris = 1200;
-  }
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="tjanst" value="lopande" checked />
+        <span class="checkmark"></span>
+        Löpande bokföring (per månad)
+      </label>
+      <label>
+        <input type="radio" name="tjanst" value="arsredovisning" />
+        <span class="checkmark"></span>
+        Årsredovisning (per år)
+      </label>
+    </div>
 
-  let total = (grundpris + fakturapris + tjanstPris) / 12;
-  total = Math.round(total);
+    <div id="price">Cirkapris: 0 kr / månad</div>
+  </section>
 
-  priceDisplay.textContent = `Cirkapris: ${total.toLocaleString('sv-SE')} kr / månad`;
-}
+  <section id="contact" class="container contact-section">
+    <h2>Kontakt</h2>
+    <form id="contact-form" novalidate>
+      <label for="name">Namn</label>
+      <input type="text" id="name" name="name" required placeholder="Ditt namn" />
 
-omsattningInput.addEventListener('input', () => {
-  document.getElementById('omsattning-value').textContent = omsattningInput.value;
-  calculatePrice();
-});
-fakturorInput.addEventListener('input', () => {
-  document.getElementById('fakturor-value').textContent = fakturorInput.value;
-  calculatePrice();
-});
-tjanstInputs.forEach(input => input.addEventListener('change', calculatePrice));
+      <label for="email">E-post</label>
+      <input type="email" id="email" name="email" required placeholder="Din e-post" />
 
-// Startvärde
-calculatePrice();
+      <label for="message">Meddelande</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Skriv ditt meddelande här"></textarea>
 
-// Kontaktformulär validering (endast enkel feedback)
-const contactForm = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
+      <button type="submit" class="btn-primary">Skicka</button>
+      <p id="form-message"></p>
+    </form>
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+    <div class="contact-info">
+      <p>Email: info@yacobsbokforing.se</p>
+      <p>Telefon: 070-123 45 67</p>
+      <p>Adress: Lilla Gatan 1, 123 45 Stockholm</p>
+    </div>
+  </section>
 
-  if (!contactForm.checkValidity()) {
-    formMessage.textContent = 'Vänligen fyll i alla fält korrekt.';
-    formMessage.style.color = 'red';
-    return;
-  }
+  <footer>
+    <p>© 2025 Yacobs bokföring</p>
+  </footer>
 
-  formMessage.style.color = '#1e3c72';
-  formMessage.textContent = 'Tack för ditt meddelande! Vi återkommer snart.';
-
-  contactForm.reset();
-});
+  <script src="script.js"></script>
+</body>
+</html>
