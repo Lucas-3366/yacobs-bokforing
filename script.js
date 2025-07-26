@@ -7,7 +7,6 @@ hamburger.addEventListener('click', () => {
 });
 
 // Offertfunktion
-
 const omsattningInput = document.getElementById('omsattning');
 const fakturorInput = document.getElementById('fakturor');
 const tjanstInputs = document.querySelectorAll('input[name="tjanst"]');
