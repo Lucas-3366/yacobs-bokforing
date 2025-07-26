@@ -1,270 +1,272 @@
-/* Container med bättre maxbredd och centrerad layout */
+/* Grundinställningar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafc;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container */
 .container {
-    width: 90%;
-    max-width: 1300px; /* Lite bredare men maxar så det ser bra ut */
-    margin: 0 auto 6rem auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-/* HEADER */
+/* Header */
 header {
-    background: linear-gradient(90deg, #004e7a, #007acc);
-    color: white;
-    padding: 4rem 0 5rem;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 94, 122, 0.5);
-    position: relative;
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  background: #1e3c72;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+  color: #ffd600;
 }
 
-.header-container h1 {
-    font-size: 5.8rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin-bottom: 0.4rem;
-    user-select: none;
-    white-space: nowrap; /* Gör så det inte bryts på två rader */
-    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
 }
 
-.slogan {
-    font-size: 2.8rem;
-    font-style: italic;
-    font-weight: 400;
-    margin-bottom: 3rem;
-    user-select: none;
+/* Hero */
+#hero {
+  background: url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 60, 114, 0.75);
+  z-index: 0;
+}
+.hero-container {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+#hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+#hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.btn-primary {
+  background-color: #ffd600;
+  color: #1e3c72;
+  padding: 0.85rem 3rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #e6c200;
 }
 
-/* Navigation - justera så alla länkar sitter på samma rad och får jämnt mellanrum */
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    margin-bottom: 3rem;
-    flex-wrap: nowrap;
+/* Services */
+.services-section {
+  text-align: center;
+  margin-top: 3rem;
 }
-
-/* Hero CTA knapp i header placerad längst ner under nav */
-.btn-primary.hero-cta {
-    position: relative; /* Istället för absolut, så den inte överlappar kontakt */
-    margin: 0 auto;
-    display: inline-block;
-    font-size: 3rem;
-    padding: 2.2rem 6rem;
-    background: #00aaff;
-    border-radius: 40px;
-    color: white;
-    font-weight: 800;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 30px rgba(0, 170, 255, 0.7);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    user-select: none;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
-    text-align: center;
+.services-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1e3c72;
+  font-weight: 700;
 }
-
-.btn-primary.hero-cta:hover,
-.btn-primary.hero-cta:focus {
-    background-color: #008fcc;
-    box-shadow: 0 12px 45px rgba(0, 143, 204, 0.85);
-    outline: none;
-    animation: bounce 0.6s ease;
-}
-
-/* Om oss justering så det är helt centrerat */
-.about-section {
-    background: #007acc22;
-    border-radius: 40px;
-    padding: 6rem 8rem;
-    margin-bottom: 8rem;
-    user-select: none;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-/* Kontakt justering så text och knapp inte krockar */
-.contact-section {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    padding: 6rem 3rem;
-    border-radius: 40px;
-    background: #e8f4fc;
-    box-shadow: 0 12px 35px rgba(0, 122, 204, 0.3);
-    user-select: none;
-}
-
-.contact-info p {
-    font-size: 2.6rem;
-    margin-bottom: 1.7rem;
-    font-weight: 600;
-}
-
-.contact-info a {
-    color: #007acc;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.contact-info a:hover,
-.contact-info a:focus {
-    text-decoration: underline;
-    outline: none;
-}
-
-/* Sociala ikoner */
-.socials {
-    margin-top: 3.5rem;
-}
-
-.social-icon {
-    font-size: 4.6rem;
-    margin: 0 3rem;
-    color: #007acc;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    user-select: none;
-}
-
-.social-icon:hover,
-.social-icon:focus {
-    color: #005ea1;
-    outline: none;
-}
-
-/* Tjänster - korten blir större och med mer spacing */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 5.5rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 2rem;
 }
-
 .service-card {
-    background: white;
-    border-radius: 32px;
-    padding: 4.8rem 4.8rem 5.5rem;
-    box-shadow: 0 12px 40px rgba(0, 122, 204, 0.1);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  background: white;
+  padding: 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
-
-.service-card:hover,
-.service-card:focus-within {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 122, 204, 0.25);
-    outline: none;
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
-
-.service-card .icon {
-    font-size: 6.4rem;
-    margin-bottom: 3.2rem;
-    user-select: none;
-}
-
 .service-card h3 {
-    font-size: 3.8rem;
-    font-weight: 800;
-    margin-bottom: 2.8rem;
-    color: #004e7a;
-    text-align: center;
+  margin-bottom: 0.8rem;
+  color: #1e3c72;
+  font-weight: 700;
 }
 
-.service-card p {
-    font-size: 2.6rem;
-    color: #555;
-    margin-bottom: 4rem;
-    text-align: center;
-    flex-grow: 1;
+/* About */
+.about-section {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  margin: 4rem 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.about-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  font-weight: 700;
+}
+.about-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
-.btn-more {
-    font-size: 2.4rem;
-    background: #0099ff;
-    border: none;
-    border-radius: 24px;
-    color: white;
-    padding: 1.7rem 4.5rem;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-    user-select: none;
-    text-transform: uppercase;
-    box-shadow: 0 7px 22px rgba(0, 153, 255, 0.65);
-    align-self: center;
-    letter-spacing: 0.07em;
-    width: 180px;
+/* Contact */
+.contact-section {
+  margin-bottom: 4rem;
 }
-
-.btn-more:hover,
-.btn-more:focus {
-    background-color: #007acc;
-    outline: none;
-    box-shadow: 0 12px 35px rgba(0, 122, 204, 0.85);
+.contact-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1e3c72;
+  font-weight: 700;
+}
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#contact-form label {
+  font-weight: 600;
+}
+#contact-form input,
+#contact-form textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+#contact-form input:focus,
+#contact-form textarea:focus {
+  border-color: #1e3c72;
+  outline: none;
+}
+#contact-form button {
+  background-color: #1e3c72;
+  color: white;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#contact-form button:hover,
+#contact-form button:focus {
+  background-color: #16335b;
+}
+#form-message {
+  text-align: center;
+  color: #d93025;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.contact-info {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
 }
 
 /* Footer */
 footer {
-    background: #003a6b;
-    color: white;
-    padding: 3.5rem 0;
-    text-align: center;
-    user-select: none;
+  background-color: #e2e8f0;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
 }
 
-.footer-container p {
-    font-size: 1.9rem;
-    font-weight: 400;
-}
-
-/* Modal (popup) justerad för snygghet */
-.modal-content {
-    background: white;
-    border-radius: 32px;
-    max-width: 750px;
-    padding: 5rem 6rem;
-    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.3);
-    position: relative;
-    user-select: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-.modal-content h3 {
-    font-size: 3.5rem;
-    margin-bottom: 3rem;
-    color: #004e7a;
-}
-
-.modal-content p {
-    font-size: 2.6rem;
-    color: #333;
-    line-height: 1.9;
-    user-select: text;
-}
-
-.close-btn {
-    position: absolute;
-    top: 1.8rem;
-    right: 2.5rem;
-    font-size: 4rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #007acc;
-    font-weight: 700;
-    user-select: none;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #005ea1;
-    outline: none;
+/* Responsiv hamburger */
+@media (max-width: 768px) {
+  nav ul {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    height: calc(100vh - 70px);
+    background-color: #1e3c72;
+    flex-direction: column;
+    width: 250px;
+    padding-top: 2rem;
+    gap: 2rem;
+    transition: right 0.3s ease;
+  }
+  nav ul.active {
+    right: 0;
+  }
+  nav ul li a {
+    font-size: 1.2rem;
+    padding: 0 1.5rem;
+    display: block;
+  }
+  .hamburger {
+    display: flex;
+  }
 }
